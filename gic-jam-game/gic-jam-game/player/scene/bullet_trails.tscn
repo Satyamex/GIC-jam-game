@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7trb2j7utm5y"]
+
+[ext_resource type="Script" uid="uid://cfdtl0msox7wd" path="res://player/script/bullet_trails.gd" id="1_w35yr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0sxt"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.878431, 0.34902, 1)
+emission_enabled = true
+emission = Color(0.878431, 0, 0, 1)
+emission_energy_multiplier = 6.0
+
+[node name="bullet_trails" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_a0sxt")
+cast_shadow = 0
+script = ExtResource("1_w35yr")

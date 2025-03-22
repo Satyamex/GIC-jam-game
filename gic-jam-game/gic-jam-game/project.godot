@@ -69,6 +69,10 @@ reload={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_20="weapon"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

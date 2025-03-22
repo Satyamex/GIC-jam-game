@@ -77,6 +77,9 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var bullets_labels = %bullets_labels
 @onready var jump = $audio/jump
 @onready var footsteps = $audio/footsteps
+@onready var barrel_pos = $head/eye/SubViewportContainer/SubViewport/POV_2/fps_pov/shotgun/model_shotgun/RootNode/weapon_scifi_shotgun/barrelpos
+
+@onready var ray_end_pos = $head/eye/shothun/ray_end_pos
 
 # --- Debug Displays ---
 var PLAYER_SPEED: float = self.velocity.length()   # Current speed for debugging
@@ -84,14 +87,18 @@ var PLAYER_SPEED: float = self.velocity.length()   # Current speed for debugging
 @onready var state = %state
 
 # ============================ SHOTGUN MANAGER ============================
-var spread: float = 8.0                           # Spread value for randomizing ray directions
-var damage: float = 50.0                          # Damage per pellet hit
+var spread: float = 10.0                          # Spread value for randomizing ray directions
+var damage: float = 30.0                         # Damage per pellet hit
 var bullets_per_reload: int = 5                   # Number of bullets per reload
 var max_bullets_per_reload_capacity: float = 5.0  # Current magazine capacity
 var mag_size: float = 15.0                        # Total magazine size (if using total ammo)
 var max_mag_size: float = 15.0                    # Maximum ammo reserve (if used)
 @export var reload_time: float = 2.0   
 @export var buffer: float = 0.7                   # Time (in seconds) to reload
+var trails = preload("res://player/scene/bullet_trails.tscn")
+var trace
+var particles = preload("res://player/scene/particles_emit_manager.tscn")
+var par
 
 # ==============================================================================
 #                          PLAYER STATE & INPUT
@@ -145,6 +152,9 @@ func _ready():
 	obstacle_checker.add_exception(self)
 	# Set viewport size.
 	sub_viewport.size = DisplayServer.window_get_size()
+	var main_envi = camera.environment
+	pov_2.environment = main_envi
+
 
 # --- _unhandled_input: Mouse Look ---
 func _unhandled_input(event):
@@ -155,11 +165,17 @@ func _unhandled_input(event):
 		# Horizontal rotation: rotate the player body.
 		rotate_y(deg_to_rad(-event.relative.x * sensitivity))
 		pov_2._sway(Vector2(-event.relative.x, event.relative.y))
+	var main_envi = camera.environment
+	pov_2.environment = main_envi
+
+func _process(delta):
+	pov_2.set_global_transform(camera.get_global_transform())
+	
 
 # --- _physics_process: Main Loop ---
 func _physics_process(delta):
 	# Update POV to match camera's transform.
-	pov_2.global_transform = camera.global_transform
+
 	
 	# Update debug speed.
 	PLAYER_SPEED = self.velocity.length()
@@ -358,15 +374,32 @@ func _fire_shotgun():
 	if Input.is_action_just_pressed("shoot") and max_bullets_per_reload_capacity > 0 and not reloading:
 		SHOOTING = true
 		max_bullets_per_reload_capacity -= 1
+		print(pov_2.bar_pos)
+		#par = particles.instantiate()
 		# For each RayCast3D bullet, update random spread and check collision.
 		for r in bullets_container.get_children():
 			r.target_position.x = randf_range(-spread, spread)
 			r.target_position.y = randf_range(-spread, spread)
 			r.enabled = true
-			if r.is_colliding() and r.get_collider().has_method("_damage"):
-				r.get_collider()._damage(damage)
+			par = particles.instantiate()
+			var trace = trails.instantiate()
+			get_tree().current_scene.add_child(trace)
+			get_tree().current_scene.add_child(par)
+			if r.is_colliding():
+				trace.init(barrel_pos.global_transform.origin, r.get_collision_point())
+				par._emit_particles( false , r.get_collision_point() , barrel_pos.global_transform.origin)
+				if r.is_colliding() and r.get_collider().has_method("_damage"):
+					r.get_collider()._damage(damage)
+					par._emit_particles( true , r.get_collision_point() , barrel_pos.global_transform.origin)
+					player_animation.play("hit_affect")
+			else:
+				pass
+				trace.init(barrel_pos.global_transform.origin, ray_end_pos.global_transform.origin)
+		#get_tree().current_scene.add_child(trace)
+
 	else:
 		SHOOTING = false
+
 
 # --- start_reload: Handle Reloading with Delay ---
 func start_reload():

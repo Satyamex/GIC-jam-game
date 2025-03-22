@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw2jpyc8ag4sf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xwgy0"]
+velocity_pivot = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 4.0
+initial_velocity_max = 7.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykru6"]
+albedo_color = Color(1, 1, 0.486275, 1)
+emission_enabled = true
+emission = Color(0.823529, 0.894118, 0, 1)
+emission_energy_multiplier = 8.79
+
+[sub_resource type="BoxMesh" id="BoxMesh_p0bre"]
+material = SubResource("StandardMaterial3D_ykru6")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="decalsparticles" type="GPUParticles3D"]
+emitting = false
+one_shot = true
+speed_scale = 0.9
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xwgy0")
+draw_pass_1 = SubResource("BoxMesh_p0bre")

@@ -1,15 +1,18 @@
-[gd_scene load_steps=26 format=4 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=30 format=4 uid="uid://8pv5dj2wmaf0"]
 
 [ext_resource type="Script" uid="uid://dovewhoamjlpw" path="res://player/script/player_controller.gd" id="1_iki0w"]
 [ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
 [ext_resource type="Script" uid="uid://cpkosbrsii7j2" path="res://player/script/fps.gd" id="2_nmcgq"]
 [ext_resource type="Texture2D" uid="uid://c33f1h0ujdhfq" path="res://assests/crosshair/crosshair044.png" id="3_t4lix"]
+[ext_resource type="Texture2D" uid="uid://lkq605pcli1e" path="res://assests/materials and textures/crosshair087.png" id="4_h8hbd"]
 [ext_resource type="AudioStream" uid="uid://biyk74cwahpuq" path="res://assests/sfx/384874__ali_6868__left-gravel-footstep-5.wav" id="5_h02ye"]
 [ext_resource type="AudioStream" uid="uid://d23pgi5pq8xga" path="res://assests/sfx/zapsplat_household_window_sliding_1990s_rough_open_003_113000.mp3" id="6_kocn0"]
 [ext_resource type="AudioStream" uid="uid://fomvr4sxc04x" path="res://assests/sfx/jumpland44100.mp3" id="6_xntpc"]
 [ext_resource type="AudioStream" uid="uid://b4r7xkuogmbq8" path="res://assests/sfx/wood03.ogg" id="7_cwbnx"]
+[ext_resource type="AudioStream" uid="uid://w4o3rjftwhac" path="res://assests/sfx/0323(3).MP3" id="7_j61vv"]
 [ext_resource type="AudioStream" uid="uid://krv738agoj3d" path="res://assests/sfx/leaves01.ogg" id="7_o62yw"]
 [ext_resource type="AudioStream" uid="uid://cgioghrk06vpq" path="res://assests/sfx/wood02.ogg" id="8_kocn0"]
+[ext_resource type="Script" uid="uid://bnxa27rvsjx53" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iki0w"]
 
@@ -68,6 +71,54 @@ tracks/3/path = NodePath("audio/land:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:expand_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("audio/hit_effect:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_j61vv")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("audio/hit_effect:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -222,10 +273,63 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.10472), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_h8hbd"]
+resource_name = "hit_affect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:expand_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0786294, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0786294, 0.166667),
+"transitions": PackedFloat32Array(1, 0.406126, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio/hit_effect:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_j61vv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("audio/hit_effect:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1axc"]
 _data = {
 &"RESET": SubResource("Animation_45fae"),
 &"crouch": SubResource("Animation_jjo6d"),
+&"hit_affect": SubResource("Animation_h8hbd"),
 &"jump": SubResource("Animation_nmcgq"),
 &"landing": SubResource("Animation_kljte"),
 &"roll": SubResource("Animation_47d28"),
@@ -279,8 +383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651091, 0)
 [node name="eye" type="Node3D" parent="head"]
 
 [node name="Camera3D" type="Camera3D" parent="head/eye"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-cull_mask = 1048573
+cull_mask = 524287
 
 [node name="UI" type="Node" parent="head/eye/Camera3D"]
 
@@ -313,33 +416,6 @@ text = "SPEED:"
 script = ExtResource("2_nmcgq")
 
 [node name="TextureRect" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 2
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-clip_children = 0
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
-clip_contents = false
-custom_minimum_size = Vector2(0, 0)
-layout_direction = 0
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -352,33 +428,26 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.0
-scale = Vector2(1, 1)
-pivot_offset = Vector2(0, 0)
-size_flags_horizontal = 1
-size_flags_vertical = 1
-size_flags_stretch_ratio = 1.0
-localize_numeral_system = true
-tooltip_text = ""
-tooltip_auto_translate_mode = 0
-focus_neighbor_left = NodePath("")
-focus_neighbor_top = NodePath("")
-focus_neighbor_right = NodePath("")
-focus_neighbor_bottom = NodePath("")
-focus_next = NodePath("")
-focus_previous = NodePath("")
-focus_mode = 0
-mouse_filter = 1
-mouse_force_pass_scroll_events = true
-mouse_default_cursor_shape = 0
-theme = null
-theme_type_variation = &""
 texture = ExtResource("3_t4lix")
 expand_mode = 1
-stretch_mode = 0
-flip_h = false
-flip_v = false
-script = null
+
+[node name="hit_affect" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+visible = false
+custom_minimum_size = Vector2(0.215, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h8hbd")
+expand_mode = 1
 
 [node name="gun_stats" type="HBoxContainer" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
 layout_mode = 0
@@ -399,36 +468,43 @@ text = "bullets"
 
 [node name="bullet" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
 enabled = false
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
 
 [node name="bullet2" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
 
 [node name="bullet3" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
 
 [node name="bullet4" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
 
 [node name="bullet5" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
 
 [node name="bullet6" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -70)
+
+[node name="ray_end_pos" type="Node3D" parent="head/eye/shothun"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="head/eye"]
 unique_name_in_owner = true
-offset_right = 1154.0
-offset_bottom = 646.0
-metadata/_edit_lock_ = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="head/eye/SubViewportContainer"]
 unique_name_in_owner = true
 transparent_bg = true
 handle_input_locally = false
+positional_shadow_atlas_size = 4096
 render_target_update_mode = 4
 
 [node name="POV_2" parent="head/eye/SubViewportContainer/SubViewport" instance=ExtResource("2_86052")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651, 0)
+cull_mask = 524288
 
 [node name="obstacle_check" type="Node3D" parent="head"]
 
@@ -436,8 +512,6 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873617, 0)
 shape = SubResource("SphereShape3D_iki0w")
 debug_shape_custom_color = Color(0, 1, 0, 1)
-
-[node name="hand_View" type="Node3D" parent="head"]
 
 [node name="PLAYER_ANIMATION" type="AnimationPlayer" parent="."]
 libraries = {
@@ -454,6 +528,10 @@ volume_db = -15.0
 stream = ExtResource("6_kocn0")
 volume_db = -6.0
 
+[node name="hit_effect" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("7_j61vv")
+volume_db = 1.0
+
 [node name="crouch" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("7_o62yw")
 volume_db = -6.0
@@ -464,3 +542,6 @@ volume_db = -10.0
 
 [node name="footsteps" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_qgsae")
+
+[node name="player_health_manager" type="Node" parent="."]
+script = ExtResource("11_vw40g")

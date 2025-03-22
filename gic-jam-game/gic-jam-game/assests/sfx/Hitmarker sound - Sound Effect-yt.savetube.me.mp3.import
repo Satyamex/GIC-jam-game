@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhvvnj1u25m6m"
+path="res://.godot/imported/Hitmarker sound - Sound Effect-yt.savetube.me.mp3-3859b698b2f3f6de730e762346fe1cf2.mp3str"
+
+[deps]
+
+source_file="res://assests/sfx/Hitmarker sound - Sound Effect-yt.savetube.me.mp3"
+dest_files=["res://.godot/imported/Hitmarker sound - Sound Effect-yt.savetube.me.mp3-3859b698b2f3f6de730e762346fe1cf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

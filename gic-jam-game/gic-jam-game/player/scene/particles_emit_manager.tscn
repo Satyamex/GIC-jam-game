@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://28anx8i7ekku"]
+
+[ext_resource type="PackedScene" uid="uid://bw2jpyc8ag4sf" path="res://player/scene/decalsparticles.tscn" id="1_doxel"]
+[ext_resource type="Script" uid="uid://bo3boka6ggixd" path="res://player/script/particles_emit_manager.gd" id="1_nej0d"]
+[ext_resource type="PackedScene" uid="uid://0b8qukcxk00g" path="res://player/scene/blood_particles.tscn" id="2_nej0d"]
+
+[node name="particles_emit_manager" type="Node3D"]
+script = ExtResource("1_nej0d")
+
+[node name="blood_decals" parent="." instance=ExtResource("2_nej0d")]
+
+[node name="decalsparticles" parent="." instance=ExtResource("1_doxel")]

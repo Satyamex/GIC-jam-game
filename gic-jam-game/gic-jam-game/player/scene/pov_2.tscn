@@ -1,8 +1,8 @@
 [gd_scene load_steps=132 format=4 uid="uid://coee1r3olww4k"]
 
 [ext_resource type="Script" uid="uid://65glh5ntb6yc" path="res://player/scene/pov_2.gd" id="1_6fibk"]
-[ext_resource type="AudioStream" uid="uid://ctpkr0jea85lb" path="res://assests/276960__gfl7__g36c-reload-sound.mp3" id="2_0kvg2"]
-[ext_resource type="AudioStream" uid="uid://ex5l1moyb6vm" path="res://assests/080902_shotgun-39753.mp3" id="2_vi8be"]
+[ext_resource type="AudioStream" uid="uid://ctpkr0jea85lb" path="res://assests/sfx/276960__gfl7__g36c-reload-sound.mp3" id="2_0kvg2"]
+[ext_resource type="AudioStream" uid="uid://ex5l1moyb6vm" path="res://assests/sfx/080902_shotgun-39753.mp3" id="2_vi8be"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkf2m"]
 resource_name = "black"
@@ -1890,7 +1890,7 @@ tracks/41/keys = {
 
 [sub_resource type="Animation" id="Animation_my3wf"]
 resource_name = "SHOOT"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1898,7 +1898,7 @@ tracks/0/path = NodePath("fps_pov/shotgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.5),
 "transitions": PackedFloat32Array(1, 0.329877, 1),
 "update": 0,
 "values": [Vector3(-0.045, 0.0866067, 0.0945762), Vector3(-0.045, -0.098, 0.22), Vector3(-0.045, 0.0866067, 0.0945762)]
@@ -1910,7 +1910,7 @@ tracks/1/path = NodePath("fps_pov/shotgun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.5),
 "transitions": PackedFloat32Array(1, 0.233258, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(0, 0, 0)]
@@ -1922,7 +1922,7 @@ tracks/2/path = NodePath("fps_pov/shotgun/hand_right/hand2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.001153, 0.166667, 0.701153),
+"times": PackedFloat32Array(0.001153, 0.166667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.169951, -0.177822, -0.754594), Vector3(0.169951, -0.177822, -0.754594), Vector3(0.169951, -0.177822, -0.754594)]
@@ -1934,7 +1934,7 @@ tracks/3/path = NodePath("fps_pov/shotgun/hand_right/hand2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.001153, 0.166667, 0.701153),
+"times": PackedFloat32Array(0.001153, 0.166667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-2.00835e-08, -0.0645772, 2.30209), Vector3(-2.00835e-08, -0.0645772, 2.30209), Vector3(-2.00835e-08, -0.0645772, 2.30209)]
@@ -1946,7 +1946,7 @@ tracks/4/path = NodePath("fps_pov/shotgun/hand_left:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.163726, 0.7),
+"times": PackedFloat32Array(0, 0.133333, 0.5),
 "transitions": PackedFloat32Array(1, 0.574349, 1),
 "update": 0,
 "values": [Vector3(0.315, -0.17, -0.69), Vector3(0.315, -0.17, -0.625), Vector3(0.315, -0.17, -0.69)]
@@ -1958,10 +1958,10 @@ tracks/5/path = NodePath("fps_pov/shotgun/hand_left:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.163726, 0.166032, 0.7),
-"transitions": PackedFloat32Array(1, 1, 0.615572, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.5),
+"transitions": PackedFloat32Array(1, 0.615572, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.122173), Vector3(0.173573, 1.83581e-09, 0.121648), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.173573, 1.83581e-09, 0.121648), Vector3(0, 0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1970,7 +1970,7 @@ tracks/6/path = NodePath("fps_pov/shotgun/model_shotgun/RootNode:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.163726, 0.7),
+"times": PackedFloat32Array(0, 0.133333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.05, 0, 0), Vector3(0, 0, 0)]
@@ -1982,7 +1982,7 @@ tracks/7/path = NodePath("fps_pov/shotgun/model_shotgun/RootNode:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.163726, 0.7),
+"times": PackedFloat32Array(0, 0.133333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0523599), Vector3(0, 0, 0)]
@@ -1994,7 +1994,7 @@ tracks/8/path = NodePath("fps_pov/shotgun/hand_left/untitled/hand/thumb_0:positi
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
+"times": PackedFloat32Array(0, 0.266667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.214054, 0.0568428, -0.258721), Vector3(0.407858, 0.0569623, -0.258933), Vector3(0.214054, 0.0568428, -0.258721)]
@@ -2006,10 +2006,37 @@ tracks/9/path = NodePath("fps_pov/shotgun/hand_left/untitled/hand/thumb_0:rotati
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.0635433, 0.3, 0.7),
+"times": PackedFloat32Array(0, 0.266667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.0320428, 0.10937, 1.25847), Vector3(0.442012, 0.218008, 0.212015), Vector3(0.0320428, 0.10937, 1.25847)]
+}
+
+[sub_resource type="Animation" id="Animation_2654j"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fps_pov:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fps_pov:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0kvg2"]
@@ -2438,38 +2465,10 @@ tracks/30/path = NodePath("AudioStreamPlayer2:playing")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
-"times": PackedFloat32Array(0.233333, 0.680849, 0.748558, 1.13333, 1.73333, 1.76667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.732043),
 "update": 1,
-"values": [true, true, false, true, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_af6oj"]
-resource_name = "walk"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fps_pov/shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.233333, 0.4),
-"transitions": PackedFloat32Array(1, 0.615572, 1.23114, 1),
-"update": 0,
-"values": [Vector3(-0.045, 0.01, 0), Vector3(-0.02, 0.025, 0), Vector3(-0.045, -0.015, 0), Vector3(-0.045, 0.01, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("fps_pov/shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.233333, 0.4),
-"transitions": PackedFloat32Array(1, 0.435275, 1.93187, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.0436332, -0.0785398), Vector3(0, 0.0436332, 0.0785398), Vector3(0, 0, 0)]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_4lrc4"]
@@ -2648,31 +2647,32 @@ tracks/5/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.692438, 0.0156886, 0.043483)]
 }
 
-[sub_resource type="Animation" id="Animation_2654j"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_af6oj"]
+resource_name = "walk"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fps_pov:position")
+tracks/0/path = NodePath("fps_pov/shotgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 0.615572, 1.23114, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.045, 0.01, 0), Vector3(-0.02, 0.025, 0), Vector3(-0.045, -0.015, 0), Vector3(-0.045, 0.01, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("fps_pov:rotation")
+tracks/1/path = NodePath("fps_pov/shotgun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 0.435275, 1.93187, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.0436332, -0.0785398), Vector3(0, 0.0436332, 0.0785398), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_af6oj"]
@@ -2721,14 +2721,14 @@ mesh = SubResource("ArrayMesh_4h7mr")
 skeleton = NodePath("")
 
 [node name="prop" type="MeshInstance3D" parent="fps_pov/shotgun/model_shotgun/RootNode/weapon_scifi_shotgun"]
-transform = Transform3D(-0.965926, 0.258819, 1.13133e-08, 0, -4.37114e-08, 1, 0.258819, 0.965926, 4.2222e-08, 0.11846, -0.0740254, 0.0452348)
+transform = Transform3D(-0.965925, 0.258822, 9.36934e-07, 0, -3.61999e-06, 1, 0.258822, 0.965925, 3.49664e-06, 0.11846, -0.0740254, 0.0452348)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_q506a")
 skeleton = NodePath("")
 
 [node name="wires" type="MeshInstance3D" parent="fps_pov/shotgun/model_shotgun/RootNode/weapon_scifi_shotgun"]
-transform = Transform3D(-1, -1.50996e-07, -6.60024e-15, 0, -4.37114e-08, 1, -1.50996e-07, 1, 4.37114e-08, 0.127261, 0.0470393, 0.0501597)
+transform = Transform3D(-1, -2.53518e-06, -9.17733e-12, 0, -3.61999e-06, 1, -2.53518e-06, 1, 3.61999e-06, 0.127261, 0.0470393, 0.0501597)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_gq6br")
@@ -2842,7 +2842,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 
 [node name="thumb_0" type="MeshInstance3D" parent="fps_pov/shotgun/hand_left/untitled/hand"]
-transform = Transform3D(0.37011, -1.13258, 0.130769, 1.1401, 0.368132, -0.038402, -0.00387685, 0.136238, 1.19089, 0.214054, 0.0568428, -0.258721)
+transform = Transform3D(0.370109, -1.13258, 0.130769, 1.1401, 0.368131, -0.038402, -0.00387684, 0.136238, 1.19089, 0.214054, 0.0568428, -0.258721)
 layers = 2
 mesh = SubResource("ArrayMesh_lebe3")
 skeleton = NodePath("")
@@ -2866,7 +2866,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0823016)
 
 [node name="hand2" type="Node3D" parent="fps_pov/shotgun/hand_right"]
-transform = Transform3D(-0.0666442, -0.074276, -0.00645324, 0.0744312, -0.0667833, 2.00835e-09, -0.00430969, -0.00480321, 0.0997916, 0.169951, -0.177822, -0.754594)
+transform = Transform3D(-0.0666441, -0.074276, -0.00645323, 0.0744311, -0.0667833, 2.00835e-09, -0.00430968, -0.00480321, 0.0997916, 0.169951, -0.177822, -0.754594)
 
 [node name="hand" type="MeshInstance3D" parent="fps_pov/shotgun/hand_right/hand2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.047)
@@ -2876,7 +2876,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6fibk")
 
 [node name="arm_lower" type="MeshInstance3D" parent="fps_pov/shotgun/hand_right/hand2/hand"]
-transform = Transform3D(0.505903, -0.862542, -0.00914079, 0.75521, 0.43778, 0.48786, -0.416798, -0.253713, 0.872874, 0, 0, 0)
+transform = Transform3D(0.505905, -0.862541, -0.00914081, 0.755209, 0.437782, 0.48786, -0.416797, -0.253714, 0.872874, 0, 0, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_hfvyq")
 skeleton = NodePath("")
@@ -2967,21 +2967,21 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 
 [node name="thumb_0" type="MeshInstance3D" parent="fps_pov/shotgun/hand_right/hand2/hand"]
-transform = Transform3D(0.84508, 0.849491, 0.0319961, -0.848108, 0.84559, -0.0501092, -0.0580833, 0.0126891, 1.1972, 0.355815, -0.0269355, -0.182714)
+transform = Transform3D(0.84508, 0.849492, 0.0319961, -0.848108, 0.845589, -0.0501092, -0.0580833, 0.0126891, 1.1972, 0.355815, -0.0269355, -0.182714)
 layers = 2
 mesh = SubResource("ArrayMesh_ohhsn")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 
 [node name="thumb_1" type="MeshInstance3D" parent="fps_pov/shotgun/hand_right/hand2/hand/thumb_0"]
-transform = Transform3D(0.999969, 0.00211229, -0.00754657, -0.0017941, 0.999119, 0.0419244, 0.00762848, -0.0419096, 0.999092, 0.209424, -2.38419e-07, -0.270738)
+transform = Transform3D(0.999969, 0.00211229, -0.00754658, -0.0017941, 0.999119, 0.0419244, 0.00762848, -0.0419096, 0.999092, 0.209424, -2.38419e-07, -0.270738)
 layers = 2
 mesh = SubResource("ArrayMesh_ci328")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 
 [node name="thumb_2" type="MeshInstance3D" parent="fps_pov/shotgun/hand_right/hand2/hand/thumb_0/thumb_1"]
-transform = Transform3D(0.99664, 0.0810969, -0.0114615, -0.000509925, 0.146082, 0.989272, 0.0819012, -0.985943, 0.145633, 0.143223, 1.19209e-07, -0.198718)
+transform = Transform3D(0.99664, 0.0810969, -0.0114614, -0.00050992, 0.146081, 0.989272, 0.0819012, -0.985943, 0.145631, 0.143223, 1.19209e-07, -0.198718)
 layers = 2
 mesh = SubResource("ArrayMesh_l16il")
 skeleton = NodePath("")
@@ -3009,8 +3009,11 @@ text = "5"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vi8be")
+volume_db = -15.0
 parameters/looping = false
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0kvg2")
+volume_db = -5.0
+pitch_scale = 1.1
 parameters/looping = false

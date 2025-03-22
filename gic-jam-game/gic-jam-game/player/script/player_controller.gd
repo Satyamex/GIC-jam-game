@@ -10,6 +10,12 @@
 class_name PLAYER_MOVEMENT
 extends CharacterBody3D
 
+var can_play: bool
+
+# Flags to trigger sounds only once
+var crouchSoundPlayed: bool = false
+var slideSoundPlayed: bool = false
+
 # ==============================================================================
 #                          GLOBAL CONFIGURATION
 # ==============================================================================
@@ -51,6 +57,7 @@ var slide_dir: Vector2 = Vector2.ZERO
 const head_bobing_sprinting_speed: float = 22.0      # Bobbing speed multiplier (sprinting)
 const head_bobing_walking_speed: float = 14.0        # Bobbing speed multiplier (walking)
 const head_bobing_crouching_speed: float = 8.0       # Bobbing speed multiplier (crouching)
+
 const head_bobing_sprinting_intensity: float = 0.4   # Bobbing intensity (sprinting)
 const head_bobing_walking_intensity: float = 0.2     # Bobbing intensity (walking)
 const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouching)
@@ -68,6 +75,8 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var shothun = $head/eye/shothun
 @onready var bullets_container = $head/eye/shothun/bullets_container
 @onready var bullets_labels = %bullets_labels
+@onready var jump = $audio/jump
+@onready var footsteps = $audio/footsteps
 
 # --- Debug Displays ---
 var PLAYER_SPEED: float = self.velocity.length()   # Current speed for debugging
@@ -76,13 +85,13 @@ var PLAYER_SPEED: float = self.velocity.length()   # Current speed for debugging
 
 # ============================ SHOTGUN MANAGER ============================
 var spread: float = 8.0                           # Spread value for randomizing ray directions
-var damage: float = 50.0                         # Damage per pellet hit
+var damage: float = 50.0                          # Damage per pellet hit
 var bullets_per_reload: int = 5                   # Number of bullets per reload
 var max_bullets_per_reload_capacity: float = 5.0  # Current magazine capacity
 var mag_size: float = 15.0                        # Total magazine size (if using total ammo)
 var max_mag_size: float = 15.0                    # Maximum ammo reserve (if used)
 @export var reload_time: float = 2.0   
-@export var buffer : float = 0.7             # Time (in seconds) to reload
+@export var buffer: float = 0.7                   # Time (in seconds) to reload
 
 # ==============================================================================
 #                          PLAYER STATE & INPUT
@@ -170,6 +179,7 @@ func _physics_process(delta):
 	# ------ Jumping ------
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		player_animation.play("jump")
+		jump.play()
 		velocity.y = JUMP_VELOCITY
 		SLIDING = false
 
@@ -228,6 +238,7 @@ func _physics_process(delta):
 
 # --- _crouch: Manage Crouching ---
 func _crouch(delta):
+	# When crouch key is held or sliding is active:
 	if Input.is_action_pressed("crouch") or SLIDING:
 		SPEED = crouch_walking_speed
 		CROUCHING = true
@@ -236,19 +247,24 @@ func _crouch(delta):
 		# Lower head position.
 		head.position.y = lerp(head.position.y, crouching_depth + 0.651, delta * lerp_speed)
 		crouched_collision_shape.disabled = false
-		un_crouched_collision_shape.disabled = true
-		# ------ Slide Management ------
+		un_crouched_collision_shape.disabled = false  # keeping it false while crouching
+		# Play crouch sound only once when the key is just pressed.
+		if Input.is_action_just_pressed("crouch") and not crouchSoundPlayed:
+			$audio/crouch.play()
+			crouchSoundPlayed = true
+		# Initiate slide if sprinting and moving.
 		if SPRINTING and input_dir != Vector2.ZERO:
 			SLIDING = true
 			slide_dir = input_dir
 			slide_timer = slide_timer_max
-			print("can_slide")
-	elif not obstacle_checker.is_colliding():
-		# Stand up if no obstacle overhead.
+			# Optionally, you can trigger slide sound here or in _slide.
+	else:
+		# When not pressing crouch and no obstacle overhead:
 		CROUCHING = false
 		head.position.y = lerp(head.position.y, 0.651, delta * lerp_speed)
 		crouched_collision_shape.disabled = true
 		un_crouched_collision_shape.disabled = false
+		crouchSoundPlayed = false
 
 # --- _sprint: Manage Sprinting ---
 func _sprint(delta):
@@ -285,7 +301,7 @@ func _state_manager(delta, p_speed):
 		head_bobing_current_intensity = 0.0
 	
 	# Update movement animation manager (if implemented).
-	pov_2._movement_animation_manager(SLIDING, WALKING, SPRINTING, SHOOTING, reloading , IDLE)
+	pov_2._movement_animation_manager(SLIDING, WALKING, SPRINTING, SHOOTING, reloading, IDLE)
 
 # --- _head_bobing_manager: Calculate and Apply Head Bobbing ---
 func _head_bobing_manager(delta):
@@ -296,6 +312,14 @@ func _head_bobing_manager(delta):
 		# Smoothly update eye position.
 		eye.position.y = lerp(eye.position.y, head_bob_vector.y / 2.0, delta * lerp_speed)
 		eye.position.x = lerp(eye.position.x, head_bob_vector.x, delta * lerp_speed)
+	
+		var thresh0ld_frequency = -head_bobing_current_intensity + 0.02
+		# Play footsteps sound only once when bobbing passes threshold.
+		if head_bob_vector.y < thresh0ld_frequency and can_play:
+			footsteps.play()
+			can_play = false
+		elif head_bob_vector.y > thresh0ld_frequency:
+			can_play = true
 
 # --- _handle_sideway_animation: Manage Sideways Animation ---
 func _handle_sideway_animation():
@@ -310,13 +334,20 @@ func _slide(delta):
 		slide_timer -= delta
 		camera.rotation.z = lerp(camera.rotation.z, -deg_to_rad(slide_tilt), delta * lerp_speed)
 		camera.fov = lerp(camera.fov, 25 + camera_fov_default, delta * lerp_speed)
+		# Play slide sound only once when sliding starts.
+		if not slideSoundPlayed:
+			$audio/sliding.play()
+			slideSoundPlayed = true
 		if slide_timer <= 0:
 			SLIDING = false
-			# Reset rotations.
+			# Reset flags and rotations.
+			slideSoundPlayed = false
 			camera.rotation.z = lerp(camera.rotation.z, 0.0, delta * lerp_speed)
 			pov_2.rotation.z = lerp(pov_2.rotation.z, 0.0, delta * lerp_speed)
 			print("slide ended")
 			print(slide_dir)
+	else:
+		slideSoundPlayed = false
 
 # --- _fire_shotgun: Handle Shooting Using RayCast3D ---
 func _fire_shotgun():
@@ -334,7 +365,6 @@ func _fire_shotgun():
 			r.enabled = true
 			if r.is_colliding() and r.get_collider().has_method("_damage"):
 				r.get_collider()._damage(damage)
-
 	else:
 		SHOOTING = false
 

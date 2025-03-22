@@ -275,22 +275,22 @@ text = "bullets"
 
 [node name="bullet" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
 enabled = false
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="bullet2" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="bullet3" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="bullet4" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="bullet5" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="bullet6" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -100)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="head/eye"]
 unique_name_in_owner = true

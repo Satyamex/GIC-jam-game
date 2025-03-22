@@ -62,11 +62,21 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var eye = $head/eye                                              # Eye node (for head bobbing)
 @onready var player_animation  = $PLAYER_ANIMATION                        # Animation player node
 @onready var character_body_3d = $"."
+@onready var sub_viewport = %SubViewport
+@onready var pov_2 = $head/eye/SubViewportContainer/SubViewport/POV_2
+@onready var shothun = $head/eye/shothun
+@onready var bullets_container = $head/eye/shothun/bullets_container
+
 
 # --- Debug Displays ---
 var PLAYER_SPEED = self.velocity.length()            # Current speed for debugging
-@onready var speed_label = $UI/player_movement_Debugger/player_states_and_speed/speed_label
-@onready var state = $UI/player_movement_Debugger/player_states_and_speed/state
+@onready var speed_label = %speed_label
+
+@onready var state  = %state
+
+#============================SHOTGUN_MANAGER
+var spread = 8.0
+var damage = 20.0
 
 # ==============================================================================
 #                          PLAYER STATE & INPUT
@@ -82,6 +92,8 @@ var SHOOTING: bool = false
 var SLIDING : bool = false
 @export var player_state: String = "IDLE"              # Descriptive state for debugging
 var can_sprint  : bool = false
+var shooting : bool = false
+var reloading : bool = false
 
 # --- Direction & Input ---
 var direction = Vector3.ZERO                        # 3D movement direction vector
@@ -101,6 +113,10 @@ var head_bobing_current_intensity : float = 0.0      # Current bobbing intensity
 
 # --- _ready: Initialization ---
 func _ready():
+	randomize()
+	for r in bullets_container.get_children():
+		r.target_position.x = randf_range(spread , -spread)
+		r.target_position.y = randf_range(spread , -spread)
 	# Capture the mouse for FPS control.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -114,7 +130,8 @@ func _ready():
 	
 	# Prevent self-collision in obstacle checking.
 	obstacle_checker.add_exception(self)
-
+	#viewport size
+	sub_viewport.size = DisplayServer.window_get_size()
 # --- _unhandled_input: Mouse Look ---
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -123,9 +140,12 @@ func _unhandled_input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		# Horizontal rotation: rotate the player body.
 		rotate_y(deg_to_rad(-event.relative.x * sensitivity))
+		pov_2._sway(Vector2(-event.relative.x , event.relative.y))
 
 # --- _physics_process: Main Loop ---
 func _physics_process(delta):
+	pov_2.global_transform = camera.global_transform
+
 	# Update debug speed.
 	PLAYER_SPEED = self.velocity.length()
 	speed_label.text = "SPEED: " + str(PLAYER_SPEED)
@@ -176,13 +196,14 @@ func _physics_process(delta):
 
 	LAST_VELOCITY = velocity
 	move_and_slide()
-	
+	_fire_shotgun()
 	# ----- State-Specific Actions -----
 	_sprint(delta)
 	_crouch(delta)
-	_state_manager(delta)
-	_head_bobing_manager(delta)
+	_state_manager(delta , PLAYER_SPEED)
+	_head_bobing_manager(delta )
 	_slide(delta)
+
 	state.text = "State: " + player_state
 	
 	# Reset to walking speed and default FOV if neither sprinting nor crouching.
@@ -221,7 +242,7 @@ func _crouch(delta):
 		un_crouched_collision_shape.disabled = false
 
 # --- _sprint: Manage Sprinting ---
-func _sprint(delta):
+func _sprint(delta ):
 	# Sprint if moving forward, walking, not crouching, and on the ground.
 	if Input.is_action_pressed("sprint") and WALKING and not CROUCHING and is_on_floor() and input_dir.y == -1 :
 		SPEED = sprinting_speed
@@ -232,21 +253,21 @@ func _sprint(delta):
 		SPRINTING = false
 
 # --- _state_manager: Update State & Head Bobbing Setup ---
-func _state_manager(delta):
+func _state_manager(delta , p_speed):
 	# Prioritize: Sprint > Sliding > Crouch > Walk > Idle.
-	if SPRINTING:
+	if SPRINTING and p_speed >= 1:
 		player_state = "Sprinting"
 		head_bobing_index += head_bobing_sprinting_speed * delta
 		head_bobing_current_intensity = head_bobing_sprinting_intensity
-	elif  SLIDING:
+	elif  SLIDING and p_speed >= 1:
 		player_state = "Sliding"
 		head_bobing_index += head_bobing_crouching_speed * delta*0
 		head_bobing_current_intensity = head_bobing_crouching_intensity*0
-	elif CROUCHING:
+	elif CROUCHING and p_speed >= 1 :
 		player_state = "Crouched"
 		head_bobing_index += head_bobing_crouching_speed * delta
 		head_bobing_current_intensity = head_bobing_crouching_intensity
-	elif WALKING:
+	elif WALKING and p_speed >= 1:
 		player_state = "Walking"
 		head_bobing_index += head_bobing_walking_speed * delta
 		head_bobing_current_intensity = head_bobing_walking_intensity
@@ -281,5 +302,16 @@ func _slide(delta):
 		if slide_timer <= 0:
 			SLIDING = false
 			camera.rotation.z = lerp(eye.rotation.x , 0.0  , delta *lerp_speed)
+			pov_2.rotation.z = lerp(pov_2.rotation.z , 0.0 , delta*lerp_speed)
 			print("slide ended")
 			print(slide_dir)
+
+
+func  _fire_shotgun():
+	if Input.is_action_just_pressed("shoot"):
+		for r in bullets_container.get_children():
+			r.target_position.x = randf_range(spread , -spread)
+			r.target_position.y = randf_range(spread , -spread)
+			if r.is_colliding():
+				if r.get_collider().has_method("_damage"):
+					r.get_collider()._damage(damage)

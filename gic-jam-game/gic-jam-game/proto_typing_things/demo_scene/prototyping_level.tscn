@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bodwmh0ukym74"]
+[gd_scene load_steps=79 format=3 uid="uid://bodwmh0ukym74"]
 
 [ext_resource type="Script" uid="uid://c1y8dg0mjl6ln" path="res://proto_typing_things/demo_scene/prototyping_level.gd" id="1_8454g"]
 [ext_resource type="PackedScene" uid="uid://belw3mvkg448y" path="res://proto_typing_things/demo_scene/tube_light.tscn" id="1_ji0hm"]
@@ -28,6 +28,7 @@
 [ext_resource type="Material" uid="uid://ip4240m6psmu" path="res://proto_typing_things/materials and textures/coneblue.tres" id="26_shjfy"]
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="27_gk051"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_b64sm"]
+[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://proto_typing_things/demo_scene/demo_enemy.tscn" id="30_350v5"]
 [ext_resource type="Material" uid="uid://c3fvba4yl0uwj" path="res://proto_typing_things/materials and textures/new_standard_material_3d.tres" id="34_v1pqr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]
@@ -54,6 +55,8 @@ sdfgi_max_distance = 2651.6
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.22
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pll26"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k11l4"]
 lightmap_size_hint = Vector2i(704, 366)
@@ -315,6 +318,7 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lbnij")
+camera_attributes = SubResource("CameraAttributesPractical_pll26")
 
 [node name="Base" type="Node3D" parent="."]
 
@@ -696,3 +700,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59209, -4.94785, -5.04697)
 
 [node name="CharacterBody3D" parent="player" instance=ExtResource("29_b64sm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63916, 6.11801, 0)
+
+[node name="demo enemy" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77132, 1.47194, 10.6171)
+
+[node name="demo enemy2" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0161, 1.47194, 12.1997)
+
+[node name="demo enemy3" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99622, 1.47194, 10.7185)
+
+[node name="demo enemy4" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1883, 1.47194, 16.3489)
+
+[node name="demo enemy5" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2398, 1.47194, 20.803)
+
+[node name="demo enemy6" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0488, 1.47194, 8.34353)
+
+[node name="demo enemy7" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83723, 1.47193, 17.5156)
+
+[node name="demo enemy8" parent="." instance=ExtResource("30_350v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0168, 1.47194, 19.2365)

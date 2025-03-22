@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=17 format=3 uid="uid://8pv5dj2wmaf0"]
 
-[ext_resource type="Script" path="res://player/script/player_controller.gd" id="1_iki0w"]
-[ext_resource type="Script" path="res://player/script/fps.gd" id="2_nmcgq"]
+[ext_resource type="Script" uid="uid://dovewhoamjlpw" path="res://player/script/player_controller.gd" id="1_iki0w"]
+[ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
+[ext_resource type="Script" uid="uid://cpkosbrsii7j2" path="res://player/script/fps.gd" id="2_nmcgq"]
+[ext_resource type="Texture2D" uid="uid://c33f1h0ujdhfq" path="res://assests/crosshair/crosshair044.png" id="3_t4lix"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iki0w"]
 
@@ -206,6 +208,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651091, 0)
 [node name="eye" type="Node3D" parent="head"]
 
 [node name="Camera3D" type="Camera3D" parent="head/eye"]
+cull_mask = 1048573
+
+[node name="UI" type="Node" parent="head/eye/Camera3D"]
+
+[node name="player_movement_Debugger" type="Control" parent="head/eye/Camera3D/UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="player_states_and_speed" type="VBoxContainer" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="state" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player state"
+
+[node name="speed_label" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SPEED:"
+
+[node name="fps" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
+layout_mode = 2
+text = "SPEED:"
+script = ExtResource("2_nmcgq")
+
+[node name="TextureRect" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_t4lix")
+expand_mode = 1
+
+[node name="shothun" type="Node3D" parent="head/eye"]
+
+[node name="bullets_container" type="Node3D" parent="head/eye/shothun"]
+
+[node name="bullet" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+enabled = false
+target_position = Vector3(0, 0, -50)
+
+[node name="bullet2" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+target_position = Vector3(0, 0, -50)
+
+[node name="bullet3" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+target_position = Vector3(0, 0, -50)
+
+[node name="bullet4" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+target_position = Vector3(0, 0, -50)
+
+[node name="bullet5" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+target_position = Vector3(0, 0, -50)
+
+[node name="bullet6" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
+target_position = Vector3(0, 0, -50)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="head/eye"]
+unique_name_in_owner = true
+offset_right = 1154.0
+offset_bottom = 646.0
+
+[node name="SubViewport" type="SubViewport" parent="head/eye/SubViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="POV_2" parent="head/eye/SubViewportContainer/SubViewport" instance=ExtResource("2_86052")]
 
 [node name="obstacle_check" type="Node3D" parent="head"]
 
@@ -214,31 +299,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873617, 0)
 shape = SubResource("SphereShape3D_iki0w")
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
-[node name="UI" type="Node" parent="."]
-
-[node name="player_movement_Debugger" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="player_states_and_speed" type="VBoxContainer" parent="UI/player_movement_Debugger"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="state" type="Label" parent="UI/player_movement_Debugger/player_states_and_speed"]
-layout_mode = 2
-text = "Player state"
-
-[node name="speed_label" type="Label" parent="UI/player_movement_Debugger/player_states_and_speed"]
-layout_mode = 2
-text = "SPEED:"
-
-[node name="fps" type="Label" parent="UI/player_movement_Debugger/player_states_and_speed"]
-layout_mode = 2
-text = "SPEED:"
-script = ExtResource("2_nmcgq")
+[node name="hand_View" type="Node3D" parent="head"]
 
 [node name="PLAYER_ANIMATION" type="AnimationPlayer" parent="."]
 libraries = {

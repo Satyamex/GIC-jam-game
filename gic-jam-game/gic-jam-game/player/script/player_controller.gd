@@ -81,7 +81,8 @@ var bullets_per_reload: int = 5                   # Number of bullets per reload
 var max_bullets_per_reload_capacity: float = 5.0  # Current magazine capacity
 var mag_size: float = 15.0                        # Total magazine size (if using total ammo)
 var max_mag_size: float = 15.0                    # Maximum ammo reserve (if used)
-@export var reload_time: float = 2.0              # Time (in seconds) to reload
+@export var reload_time: float = 2.0   
+@export var buffer : float = 0.7             # Time (in seconds) to reload
 
 # ==============================================================================
 #                          PLAYER STATE & INPUT
@@ -284,7 +285,7 @@ func _state_manager(delta, p_speed):
 		head_bobing_current_intensity = 0.0
 	
 	# Update movement animation manager (if implemented).
-	pov_2._movement_animation_manager(SLIDING, WALKING, SPRINTING, SHOOTING, reloading)
+	pov_2._movement_animation_manager(SLIDING, WALKING, SPRINTING, SHOOTING, reloading , IDLE)
 
 # --- _head_bobing_manager: Calculate and Apply Head Bobbing ---
 func _head_bobing_manager(delta):
@@ -333,9 +334,9 @@ func _fire_shotgun():
 			r.enabled = true
 			if r.is_colliding() and r.get_collider().has_method("_damage"):
 				r.get_collider()._damage(damage)
+
 	else:
-		if Input.is_action_just_released("shoot"):
-			SHOOTING = false
+		SHOOTING = false
 
 # --- start_reload: Handle Reloading with Delay ---
 func start_reload():

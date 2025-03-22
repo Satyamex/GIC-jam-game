@@ -78,11 +78,15 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var jump = $audio/jump
 @onready var footsteps = $audio/footsteps
 @onready var barrel_pos = $head/eye/SubViewportContainer/SubViewport/POV_2/fps_pov/shotgun/model_shotgun/RootNode/weapon_scifi_shotgun/barrelpos
+@onready var crosshair = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect
+@onready var bullet_icon = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect2
 
 @onready var ray_end_pos = $head/eye/shothun/ray_end_pos
 
+@onready var timer = $Timer # timer to fix gun shot spam glitch
+
 # --- Debug Displays ---
-var PLAYER_SPEED: float = self.velocity.length()   # Current speed for debugging
+var PLAYER_SPEED: int = self.velocity.length()   # Current speed for debugging
 @onready var speed_label = %speed_label
 @onready var state = %state
 
@@ -99,7 +103,7 @@ var trails = preload("res://player/scene/bullet_trails.tscn")
 var trace
 var particles = preload("res://player/scene/particles_emit_manager.tscn")
 var par
-
+var can_shoot: bool = true
 # ==============================================================================
 #                          PLAYER STATE & INPUT
 # ==============================================================================
@@ -368,13 +372,15 @@ func _slide(delta):
 # --- _fire_shotgun: Handle Shooting Using RayCast3D ---
 func _fire_shotgun():
 	# Update ammo UI.
-	bullets_labels.text = "AMMO:" + str(max_bullets_per_reload_capacity)
+	bullets_labels.text = str(max_bullets_per_reload_capacity)
 	
 	# Only fire if shoot input is pressed, there is ammo, and not reloading.
-	if Input.is_action_just_pressed("shoot") and max_bullets_per_reload_capacity > 0 and not reloading:
+	if Input.is_action_just_pressed("shoot") and can_shoot and max_bullets_per_reload_capacity > 0 and not reloading:
 		SHOOTING = true
 		max_bullets_per_reload_capacity -= 1
 		print(pov_2.bar_pos)
+		can_shoot = false
+		timer.start()
 		#par = particles.instantiate()
 		# For each RayCast3D bullet, update random spread and check collision.
 		for r in bullets_container.get_children():
@@ -408,8 +414,15 @@ func start_reload():
 		return
 	
 	reloading = true
+	crosshair.hide()
 	print("Reloading...")
 	await get_tree().create_timer(reload_time).timeout  # Simulate reload delay
 	max_bullets_per_reload_capacity = bullets_per_reload  # Refill magazine
 	reloading = false
 	print("Reloaded! Ammo:", max_bullets_per_reload_capacity)
+	crosshair.show()
+
+
+# makes shooting avalible again after timer runs out
+func _on_timer_timeout():
+	can_shoot = true

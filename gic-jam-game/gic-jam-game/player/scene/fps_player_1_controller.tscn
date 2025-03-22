@@ -1,18 +1,20 @@
-[gd_scene load_steps=30 format=4 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=32 format=4 uid="uid://8pv5dj2wmaf0"]
 
-[ext_resource type="Script" uid="uid://dovewhoamjlpw" path="res://player/script/player_controller.gd" id="1_iki0w"]
+[ext_resource type="Script" path="res://player/script/player_controller.gd" id="1_iki0w"]
 [ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
-[ext_resource type="Script" uid="uid://cpkosbrsii7j2" path="res://player/script/fps.gd" id="2_nmcgq"]
+[ext_resource type="Script" path="res://player/script/fps.gd" id="2_nmcgq"]
+[ext_resource type="FontFile" uid="uid://sho03uh7qbn0" path="res://font/Orbitron-Regular.ttf" id="2_yxifr"]
 [ext_resource type="Texture2D" uid="uid://c33f1h0ujdhfq" path="res://assests/crosshair/crosshair044.png" id="3_t4lix"]
 [ext_resource type="Texture2D" uid="uid://lkq605pcli1e" path="res://assests/materials and textures/crosshair087.png" id="4_h8hbd"]
 [ext_resource type="AudioStream" uid="uid://biyk74cwahpuq" path="res://assests/sfx/384874__ali_6868__left-gravel-footstep-5.wav" id="5_h02ye"]
+[ext_resource type="Texture2D" uid="uid://dol04gc6bl0be" path="res://icons/bullets.png" id="6_3lgqy"]
 [ext_resource type="AudioStream" uid="uid://d23pgi5pq8xga" path="res://assests/sfx/zapsplat_household_window_sliding_1990s_rough_open_003_113000.mp3" id="6_kocn0"]
 [ext_resource type="AudioStream" uid="uid://fomvr4sxc04x" path="res://assests/sfx/jumpland44100.mp3" id="6_xntpc"]
 [ext_resource type="AudioStream" uid="uid://b4r7xkuogmbq8" path="res://assests/sfx/wood03.ogg" id="7_cwbnx"]
 [ext_resource type="AudioStream" uid="uid://w4o3rjftwhac" path="res://assests/sfx/0323(3).MP3" id="7_j61vv"]
 [ext_resource type="AudioStream" uid="uid://krv738agoj3d" path="res://assests/sfx/leaves01.ogg" id="7_o62yw"]
 [ext_resource type="AudioStream" uid="uid://cgioghrk06vpq" path="res://assests/sfx/wood02.ogg" id="8_kocn0"]
-[ext_resource type="Script" uid="uid://bnxa27rvsjx53" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
+[ext_resource type="Script" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iki0w"]
 
@@ -127,6 +129,58 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_jjo6d"]
 resource_name = "crouch"
+
+[sub_resource type="Animation" id="Animation_h8hbd"]
+resource_name = "hit_affect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:expand_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0786294, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 1, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0786294, 0.166667),
+"transitions": PackedFloat32Array(1, 0.406126, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio/hit_effect:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_j61vv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("audio/hit_effect:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_nmcgq"]
 resource_name = "jump"
@@ -273,68 +327,16 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.10472), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_h8hbd"]
-resource_name = "hit_affect"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:expand_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0786294, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1, 1, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("head/eye/Camera3D/UI/player_movement_Debugger/hit_affect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0786294, 0.166667),
-"transitions": PackedFloat32Array(1, 0.406126, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("audio/hit_effect:stream")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_j61vv")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("audio/hit_effect:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1axc"]
 _data = {
-&"RESET": SubResource("Animation_45fae"),
-&"crouch": SubResource("Animation_jjo6d"),
-&"hit_affect": SubResource("Animation_h8hbd"),
-&"jump": SubResource("Animation_nmcgq"),
-&"landing": SubResource("Animation_kljte"),
-&"roll": SubResource("Animation_47d28"),
-&"side_way_movement_left": SubResource("Animation_wylx6"),
-&"side_way_movement_right": SubResource("Animation_fdb53")
+"RESET": SubResource("Animation_45fae"),
+"crouch": SubResource("Animation_jjo6d"),
+"hit_affect": SubResource("Animation_h8hbd"),
+"jump": SubResource("Animation_nmcgq"),
+"landing": SubResource("Animation_kljte"),
+"roll": SubResource("Animation_47d28"),
+"side_way_movement_left": SubResource("Animation_wylx6"),
+"side_way_movement_right": SubResource("Animation_fdb53")
 }
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_nb6io"]
@@ -354,7 +356,7 @@ stream_0/stream = SubResource("AudioStreamOggVorbis_xntpc")
 stream_1/stream = ExtResource("7_cwbnx")
 stream_2/stream = ExtResource("8_kocn0")
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_iki0w")
 sensitivity = 0.1
 slide_timer_max = 1.2
@@ -363,7 +365,6 @@ lerp_speed = 9.0
 
 [node name="un_crouched_collision_shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_iki0w")
-debug_color = Color(2.69532e-06, 0.791304, 0.92051, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="un_crouched_collision_shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0079298, -2.38419e-07, 0.00433207)
@@ -375,7 +376,6 @@ skeleton = NodePath("../../..")
 [node name="crouched_collision_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CapsuleShape3D_4lhob")
-debug_color = Color(2.69532e-06, 0.791304, 0.92051, 0.42)
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651091, 0)
@@ -403,15 +403,18 @@ offset_bottom = 40.0
 [node name="state" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yxifr")
 text = "Player state"
 
 [node name="speed_label" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yxifr")
 text = "SPEED:"
 
 [node name="fps" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/player_states_and_speed"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yxifr")
 text = "SPEED:"
 script = ExtResource("2_nmcgq")
 
@@ -449,18 +452,35 @@ grow_vertical = 2
 texture = ExtResource("4_h8hbd")
 expand_mode = 1
 
-[node name="gun_stats" type="HBoxContainer" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
-layout_mode = 0
-offset_left = 357.0
-offset_top = 117.0
-offset_right = 548.0
-offset_bottom = 235.0
-
-[node name="bullets_labels" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/gun_stats"]
+[node name="bullets_labels" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -44.0
+offset_right = 105.0
+offset_bottom = -5.0
+grow_vertical = 0
 size_flags_horizontal = 4
-text = "bullets"
+theme_override_fonts/font = ExtResource("2_yxifr")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="TextureRect2" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -55.0
+offset_right = 124.0
+offset_bottom = 63.0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_3lgqy")
+expand_mode = 2
 
 [node name="shothun" type="Node3D" parent="head/eye"]
 
@@ -515,7 +535,7 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="PLAYER_ANIMATION" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_k1axc")
+"": SubResource("AnimationLibrary_k1axc")
 }
 
 [node name="audio" type="Node3D" parent="."]
@@ -545,3 +565,8 @@ stream = SubResource("AudioStreamRandomizer_qgsae")
 
 [node name="player_health_manager" type="Node" parent="."]
 script = ExtResource("11_vw40g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

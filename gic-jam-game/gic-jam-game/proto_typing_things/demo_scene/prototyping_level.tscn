@@ -28,7 +28,7 @@
 [ext_resource type="Material" uid="uid://ip4240m6psmu" path="res://proto_typing_things/materials and textures/coneblue.tres" id="26_shjfy"]
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="27_gk051"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_b64sm"]
-[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://proto_typing_things/demo_scene/demo_enemy.tscn" id="30_350v5"]
+[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://assests/demo_enemy.tscn" id="30_350v5"]
 [ext_resource type="Material" uid="uid://c3fvba4yl0uwj" path="res://proto_typing_things/materials and textures/new_standard_material_3d.tres" id="34_v1pqr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]

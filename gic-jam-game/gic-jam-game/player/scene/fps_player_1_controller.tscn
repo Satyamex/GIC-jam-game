@@ -256,6 +256,19 @@ grow_vertical = 2
 texture = ExtResource("3_t4lix")
 expand_mode = 1
 
+[node name="gun_stats" type="HBoxContainer" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 117.0
+offset_right = 548.0
+offset_bottom = 235.0
+
+[node name="bullets_labels" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger/gun_stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "bullets"
+
 [node name="shothun" type="Node3D" parent="head/eye"]
 
 [node name="bullets_container" type="Node3D" parent="head/eye/shothun"]
@@ -283,6 +296,7 @@ target_position = Vector3(0, 0, -50)
 unique_name_in_owner = true
 offset_right = 1154.0
 offset_bottom = 646.0
+metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="head/eye/SubViewportContainer"]
 unique_name_in_owner = true

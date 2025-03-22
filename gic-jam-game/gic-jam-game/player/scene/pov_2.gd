@@ -18,5 +18,9 @@ func  _sway(sway_amount):
 	fps_pov.position.x  += sway_amount.x *sens
 	fps_pov.position.y += sway_amount.y * sens
 
-func _movement_animation_manager(sliding:bool , walking:bool , sprinting:bool , jumping:bool , shooting:bool ,reloading:bool):
-	pass
+func _movement_animation_manager(sliding:bool , walking:bool , sprinting:bool ,  shooting:bool ,reloading:bool):
+	if shooting:
+		animation_player.play("shoot")
+		$AudioStreamPlayer.play()
+	elif reloading or Input.is_action_just_pressed("reload"):
+		animation_player.play("reload")

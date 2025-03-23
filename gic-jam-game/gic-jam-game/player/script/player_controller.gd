@@ -104,6 +104,7 @@ var trace
 var particles = preload("res://player/scene/particles_emit_manager.tscn")
 var par
 var can_shoot: bool = true
+var health: = 200
 # ==============================================================================
 #                          PLAYER STATE & INPUT
 # ==============================================================================

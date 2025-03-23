@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bodwmh0ukym74"]
+[gd_scene load_steps=79 format=3 uid="uid://bodwmh0ukym74"]
 
 [ext_resource type="Script" path="res://proto_typing_things/demo_scene/test-scene.gd" id="1_lwfuo"]
 [ext_resource type="Texture2D" uid="uid://b12m8t5aqws41" path="res://proto_typing_things/materials and textures/Sky boxes/free_-_skybox_basic_sky_0.jpg" id="2_isvas"]
@@ -29,8 +29,7 @@
 [ext_resource type="Material" uid="uid://ip4240m6psmu" path="res://proto_typing_things/materials and textures/coneblue.tres" id="27_nl6us"]
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="28_7gmax"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_bwkgb"]
-[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://assests/demo_enemy.tscn" id="30_cb55s"]
-[ext_resource type="PackedScene" uid="uid://fvyml0xp2t2s" path="res://scenes/enemy_1.tscn" id="31_yepk8"]
+[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://scenes/enemy1.tscn" id="30_cb55s"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]
 panorama = ExtResource("2_isvas")
@@ -703,29 +702,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59209, -4.94785, -5.04697)
 [node name="CharacterBody3D" parent="player" instance=ExtResource("29_bwkgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63916, 6.11801, 0)
 
-[node name="demo enemy" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77132, 1.47194, 10.6171)
+[node name="enemy1" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.361808, 0.471936, 16.1014)
 
-[node name="demo enemy2" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0161, 1.47194, 12.1997)
+[node name="enemy2" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24247, 0.471936, 24.833)
 
-[node name="demo enemy3" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99622, 1.47194, 10.7185)
+[node name="enemy3" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7932, 0.471936, 10.7103)
 
-[node name="demo enemy4" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1883, 1.47194, 16.3489)
+[node name="enemy4" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8154, 0.471936, 22.091)
 
-[node name="demo enemy5" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2398, 1.47194, 20.803)
+[node name="enemy5" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.27881, 0.471936, 14.5836)
 
-[node name="demo enemy6" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0488, 1.47194, 8.34353)
-
-[node name="demo enemy7" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83723, 1.47193, 17.5156)
-
-[node name="demo enemy8" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0168, 1.47194, 19.2365)
-
-[node name="enemy1" parent="." instance=ExtResource("31_yepk8")]
-transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, 4.73974, 0.471936, 16.199)
+[node name="enemy6" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9943, 0.471936, -9.48968)

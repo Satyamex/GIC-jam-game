@@ -13,7 +13,9 @@ emission = Color(0.823529, 0.894118, 0, 1)
 emission_energy_multiplier = 8.79
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0bre"]
+lightmap_size_hint = Vector2i(5, 7)
 material = SubResource("StandardMaterial3D_ykru6")
+add_uv2 = true
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="decalsparticles" type="GPUParticles3D"]

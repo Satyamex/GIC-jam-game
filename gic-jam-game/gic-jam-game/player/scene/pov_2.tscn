@@ -1,6 +1,6 @@
 [gd_scene load_steps=133 format=4 uid="uid://coee1r3olww4k"]
 
-[ext_resource type="Script" path="res://player/scene/pov_2.gd" id="1_6fibk"]
+[ext_resource type="Script" uid="uid://65glh5ntb6yc" path="res://player/scene/pov_2.gd" id="1_6fibk"]
 [ext_resource type="AudioStream" uid="uid://ctpkr0jea85lb" path="res://assests/sfx/276960__gfl7__g36c-reload-sound.mp3" id="2_0kvg2"]
 [ext_resource type="AudioStream" uid="uid://ex5l1moyb6vm" path="res://assests/sfx/080902_shotgun-39753.mp3" id="2_vi8be"]
 
@@ -2690,15 +2690,15 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_af6oj"]
 _data = {
-"RESET": SubResource("Animation_vi8be"),
-"SHOOT": SubResource("Animation_my3wf"),
-"idle": SubResource("Animation_2654j"),
-"pull up": SubResource("Animation_0kvg2"),
-"pull_away": SubResource("Animation_6fibk"),
-"reload": SubResource("Animation_lk14s"),
-"shoot": SubResource("Animation_4lrc4"),
-"sprinting": SubResource("Animation_vu5yo"),
-"walk": SubResource("Animation_af6oj")
+&"RESET": SubResource("Animation_vi8be"),
+&"SHOOT": SubResource("Animation_my3wf"),
+&"idle": SubResource("Animation_2654j"),
+&"pull up": SubResource("Animation_0kvg2"),
+&"pull_away": SubResource("Animation_6fibk"),
+&"reload": SubResource("Animation_lk14s"),
+&"shoot": SubResource("Animation_4lrc4"),
+&"sprinting": SubResource("Animation_vu5yo"),
+&"walk": SubResource("Animation_af6oj")
 }
 
 [node name="POV_2" type="Camera3D"]
@@ -3025,7 +3025,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m3ia5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_af6oj")
+&"": SubResource("AnimationLibrary_af6oj")
 }
 
 [node name="Ui" type="Node" parent="."]

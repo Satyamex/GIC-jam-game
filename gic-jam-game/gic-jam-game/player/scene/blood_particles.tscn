@@ -25,6 +25,7 @@ emission_energy_multiplier = 0.8
 material = SubResource("StandardMaterial3D_8i7v6")
 radius = 0.2
 height = 0.2
+radial_segments = 32
 
 [node name="blood_decals" type="GPUParticles3D"]
 emitting = false

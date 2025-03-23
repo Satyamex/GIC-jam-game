@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddukgw8lacwfv"]
+
+[ext_resource type="Script" uid="uid://7ojin5sh6ihy" path="res://proto_typing_things/demo_scene/demo _enemy.gd" id="1_24qic"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k43ux"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymiw3"]
+albedo_color = Color(0.641316, 0.38321, 0, 0.490196)
+roughness = 0.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3at12"]
+material = SubResource("StandardMaterial3D_ymiw3")
+
+[node name="CharacterBody3D2" type="CharacterBody3D"]
+script = ExtResource("1_24qic")
+health = 130.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_k43ux")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_3at12")

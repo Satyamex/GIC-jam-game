@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs38vlq60xwv"]
+
+[ext_resource type="Script" uid="uid://dvo53bip80eki" path="res://levels/scripts/prototyping_main_loop_manager.gd" id="1_wbxk3"]
+[ext_resource type="PackedScene" uid="uid://b44iefbdxi1re" path="res://levels/acene/lev_var_manager.tscn" id="2_6o3lb"]
+
+[node name="loop_manger" type="Node3D"]
+script = ExtResource("1_wbxk3")
+
+[node name="level_var_manager" parent="." instance=ExtResource("2_6o3lb")]
+
+[node name="enemy_t_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78812, 0)
+
+[node name="enemy_t_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58959, 0)

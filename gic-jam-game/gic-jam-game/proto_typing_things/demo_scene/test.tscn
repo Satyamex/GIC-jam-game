@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="28_7gmax"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_bwkgb"]
 [ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://assests/demo_enemy.tscn" id="30_cb55s"]
-[ext_resource type="PackedScene" uid="uid://cyat757akqmu6" path="res://scenes/ability(speed).tscn" id="31_o0ljx"]
+[ext_resource type="PackedScene" uid="uid://fvyml0xp2t2s" path="res://scenes/enemy_1.tscn" id="31_yepk8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]
 panorama = ExtResource("2_isvas")
@@ -727,5 +727,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83723, 1.47193, 17.5156)
 [node name="demo enemy8" parent="." instance=ExtResource("30_cb55s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0168, 1.47194, 19.2365)
 
-[node name="Ability(speed)" parent="." instance=ExtResource("31_o0ljx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73197, 0.471934, 12.1962)
+[node name="enemy1" parent="." instance=ExtResource("31_yepk8")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, 4.73974, 0.471936, 16.199)

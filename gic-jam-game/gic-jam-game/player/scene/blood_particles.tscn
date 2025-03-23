@@ -29,7 +29,7 @@ radial_segments = 32
 
 [node name="blood_decals" type="GPUParticles3D"]
 emitting = false
-amount = 6
+amount = 5
 one_shot = true
 speed_scale = 0.8
 explosiveness = 1.0

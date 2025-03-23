@@ -91,7 +91,7 @@ var PLAYER_SPEED: int = self.velocity.length()   # Current speed for debugging
 @onready var state = %state
 
 # ============================ SHOTGUN MANAGER ============================
-var spread: float = 10.0                          # Spread value for randomizing ray directions
+var spread: float = 7.0                        # Spread value for randomizing ray directions
 var damage: float = 30.0                         # Damage per pellet hit
 var bullets_per_reload: int = 5                   # Number of bullets per reload
 var max_bullets_per_reload_capacity: float = 5.0  # Current magazine capacity

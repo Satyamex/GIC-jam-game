@@ -21,7 +21,6 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="decalsparticles" type="GPUParticles3D"]
 emitting = false
 one_shot = true
-speed_scale = 0.9
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xwgy0")

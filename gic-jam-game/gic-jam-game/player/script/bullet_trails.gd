@@ -13,5 +13,5 @@ func init(pos1 , pos2):
 	draw_mesh.surface_add_vertex(pos1)
 	draw_mesh.surface_add_vertex(pos2)
 	draw_mesh.surface_end()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	queue_free()

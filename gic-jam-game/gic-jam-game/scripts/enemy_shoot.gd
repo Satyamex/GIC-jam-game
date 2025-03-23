@@ -3,8 +3,6 @@ extends Node3D
 @export var damage: = 30
 
 var player: Node3D 
-var ready_to_shoot: = false
-
 @onready var enemy_raycast: = $RayCast3D
 
 func _ready():

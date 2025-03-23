@@ -31,7 +31,6 @@ radial_segments = 32
 emitting = false
 amount = 5
 one_shot = true
-speed_scale = 0.8
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_lmwm7")
 draw_pass_1 = SubResource("SphereMesh_f4tc2")

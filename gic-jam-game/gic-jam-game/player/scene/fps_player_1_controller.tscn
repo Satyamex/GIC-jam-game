@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=4 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=33 format=4 uid="uid://8pv5dj2wmaf0"]
 
-[ext_resource type="Script" uid="uid://dovewhoamjlpw" path="res://player/script/player_controller.gd" id="1_iki0w"]
+[ext_resource type="Script" path="res://player/script/player_controller.gd" id="1_iki0w"]
 [ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
-[ext_resource type="Script" uid="uid://cpkosbrsii7j2" path="res://player/script/fps.gd" id="2_nmcgq"]
+[ext_resource type="Script" path="res://player/script/fps.gd" id="2_nmcgq"]
 [ext_resource type="FontFile" uid="uid://sho03uh7qbn0" path="res://font/Orbitron-Regular.ttf" id="2_yxifr"]
 [ext_resource type="Texture2D" uid="uid://c33f1h0ujdhfq" path="res://assests/crosshair/crosshair044.png" id="3_t4lix"]
 [ext_resource type="Texture2D" uid="uid://lkq605pcli1e" path="res://assests/materials and textures/crosshair087.png" id="4_h8hbd"]
@@ -12,9 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://fomvr4sxc04x" path="res://assests/sfx/jumpland44100.mp3" id="6_xntpc"]
 [ext_resource type="AudioStream" uid="uid://b4r7xkuogmbq8" path="res://assests/sfx/wood03.ogg" id="7_cwbnx"]
 [ext_resource type="AudioStream" uid="uid://w4o3rjftwhac" path="res://assests/sfx/0323(3).MP3" id="7_j61vv"]
+[ext_resource type="Texture2D" uid="uid://dfbc64mnu1v33" path="res://icons/heart-beats.png" id="7_kw6r5"]
 [ext_resource type="AudioStream" uid="uid://krv738agoj3d" path="res://assests/sfx/leaves01.ogg" id="7_o62yw"]
 [ext_resource type="AudioStream" uid="uid://cgioghrk06vpq" path="res://assests/sfx/wood02.ogg" id="8_kocn0"]
-[ext_resource type="Script" uid="uid://bnxa27rvsjx53" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
+[ext_resource type="Script" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iki0w"]
 
@@ -329,14 +330,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1axc"]
 _data = {
-&"RESET": SubResource("Animation_45fae"),
-&"crouch": SubResource("Animation_jjo6d"),
-&"hit_affect": SubResource("Animation_h8hbd"),
-&"jump": SubResource("Animation_nmcgq"),
-&"landing": SubResource("Animation_kljte"),
-&"roll": SubResource("Animation_47d28"),
-&"side_way_movement_left": SubResource("Animation_wylx6"),
-&"side_way_movement_right": SubResource("Animation_fdb53")
+"RESET": SubResource("Animation_45fae"),
+"crouch": SubResource("Animation_jjo6d"),
+"hit_affect": SubResource("Animation_h8hbd"),
+"jump": SubResource("Animation_nmcgq"),
+"landing": SubResource("Animation_kljte"),
+"roll": SubResource("Animation_47d28"),
+"side_way_movement_left": SubResource("Animation_wylx6"),
+"side_way_movement_right": SubResource("Animation_fdb53")
 }
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_nb6io"]
@@ -365,7 +366,6 @@ lerp_speed = 9.0
 
 [node name="un_crouched_collision_shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_iki0w")
-debug_color = Color(2.69532e-06, 0.791304, 0.92051, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="un_crouched_collision_shape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0079298, -2.38419e-07, 0.00433207)
@@ -377,7 +377,6 @@ skeleton = NodePath("../../..")
 [node name="crouched_collision_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CapsuleShape3D_4lhob")
-debug_color = Color(2.69532e-06, 0.791304, 0.92051, 0.42)
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651091, 0)
@@ -484,6 +483,35 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_3lgqy")
 expand_mode = 2
 
+[node name="TextureRect3" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -96.0
+offset_right = 53.0
+offset_bottom = -56.0
+grow_vertical = 0
+texture = ExtResource("7_kw6r5")
+expand_mode = 1
+
+[node name="health_label" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -95.0
+offset_right = 105.0
+offset_bottom = -56.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_yxifr")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
 [node name="shothun" type="Node3D" parent="head/eye"]
 
 [node name="bullets_container" type="Node3D" parent="head/eye/shothun"]
@@ -537,7 +565,7 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="PLAYER_ANIMATION" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_k1axc")
+"": SubResource("AnimationLibrary_k1axc")
 }
 
 [node name="audio" type="Node3D" parent="."]

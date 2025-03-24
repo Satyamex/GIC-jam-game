@@ -87,4 +87,4 @@ interaction={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-occlusion_culling/use_occlusion_culling=true
+occlusion_culling/main_scene="uid://dux84rqob72a7"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7s84wx0uts4c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_talfy"]
+direction = Vector3(0, 0, 4)
+initial_velocity_min = 6.0
+initial_velocity_max = 9.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8rtk"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 0.313726, 1)
+emission_enabled = true
+emission = Color(0.677018, 0.722132, 3.85046e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1qqo2"]
+material = SubResource("StandardMaterial3D_s8rtk")
+radius = 0.35
+height = 0.5
+
+[node name="blst_particles" type="GPUParticles3D"]
+cast_shadow = 0
+amount = 13
+explosiveness = 1.0
+randomness = 0.76
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_talfy")
+draw_pass_1 = SubResource("SphereMesh_1qqo2")

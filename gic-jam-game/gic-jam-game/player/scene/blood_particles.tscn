@@ -4,14 +4,14 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0224719), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tdevf"]
+[sub_resource type="CurveTexture" id="CurveTexture_xcah7"]
 curve = SubResource("Curve_0ld51")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lmwm7"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m16cx"]
 direction = Vector3(0, 0, 1)
 initial_velocity_min = 5.0
 initial_velocity_max = 7.0
-scale_curve = SubResource("CurveTexture_tdevf")
+scale_curve = SubResource("CurveTexture_xcah7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i7v6"]
 diffuse_mode = 3
@@ -28,9 +28,10 @@ height = 0.2
 radial_segments = 32
 
 [node name="blood_decals" type="GPUParticles3D"]
+cast_shadow = 0
 emitting = false
-amount = 5
+amount = 4
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_lmwm7")
+process_material = SubResource("ParticleProcessMaterial_m16cx")
 draw_pass_1 = SubResource("SphereMesh_f4tc2")

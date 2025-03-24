@@ -6,13 +6,13 @@
 size = Vector3(3, 4, 1)
 
 [node name="door" type="Node3D"]
-script = ExtResource("1_m3hdv")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64501, 0.276611)
 size = Vector3(3, 3, 0.446777)
 
 [node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_m3hdv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17077, 0)

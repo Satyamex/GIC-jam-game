@@ -4,19 +4,23 @@ extends Node3D
 @onready var enemy_t_2 = $enemy_t_2
 
 var level: int = 1
+var total_enemy_left: int
 var  _enemy_left_type1:int
 var  _enemy_left_type2:int
 var _no_of_enimies_to_spawn_type_1:int = 9
 var _no_of_enimies_to_spawn_type_2:int = 0
 var enemy_type_one :PackedScene = preload("res://assests/demo_enemy.tscn")
-var enemy_type_two:PackedScene = preload("res://proto_typing_things/demo_scene/demo_enemy_type_2.tscn")
+var enemy_type_two : PackedScene = preload("res://proto_typing_things/demo_scene/demo_enemy_type_2.tscn")
 var E1
 var E2
+var door  = preload("res://levels/acene/door.gd")
+var door_instance
 
 func _ready(): 
+	door_instance = door.new()
 	randomize()
 	E1 = enemy_type_one.instantiate()
-	E2 = enemy_type_two.instantiate()
+	#E2 = enemy_type_two.instantiate()
 	_no_of_enimies_to_spawn_type_1 = level_var_manager.no_of_enemy_type1
 	_no_of_enimies_to_spawn_type_2 =level_var_manager.no_of_enemy_type2
 	#ENEMY_TYPE!SPAWM
@@ -31,3 +35,7 @@ func _ready():
 			E2.position.x = randf_range(20,-20)
 			E2.position.z = randf_range(20,-20)
 			enemy_t_2.add_child(E2)   
+	total_enemy_left = _enemy_left_type1 + _enemy_left_type1*0
+
+func  _process(delta):
+	door_instance._update_door_state(total_enemy_left)

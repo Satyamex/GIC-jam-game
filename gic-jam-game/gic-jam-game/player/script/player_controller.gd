@@ -267,7 +267,7 @@ func _crouch(delta):
 		# Lower head position.
 		head.position.y = lerp(head.position.y, crouching_depth + 0.651, delta * lerp_speed)
 		crouched_collision_shape.disabled = false
-		un_crouched_collision_shape.disabled = false  # keeping it false while crouching
+		un_crouched_collision_shape.disabled = true  # keeping it false while crouching
 		# Play crouch sound only once when the key is just pressed.
 		if Input.is_action_just_pressed("crouch") and not crouchSoundPlayed:
 			$audio/crouch.play()

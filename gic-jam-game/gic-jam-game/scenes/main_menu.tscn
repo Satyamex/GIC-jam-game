@@ -133,8 +133,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_hover_color = Color(0.406717, 0.873887, 0.424736, 1)
-theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_color = Color(0.879947, 0.962077, 3.08037e-06, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_f80h3")
 theme_override_font_sizes/font_size = 60
 text = "PLAY"
@@ -150,8 +150,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_hover_color = Color(1, 0.517647, 0.513726, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(0.910932, 0.844216, 3.85046e-07, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_f80h3")
 theme_override_font_sizes/font_size = 60
 text = "QUIT
@@ -163,8 +163,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_colors/font_hover_color = Color(0.502648, 0.839686, 0.911004, 1)
-theme_override_colors/font_pressed_color = Color(0.27451, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0.313726, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.27451, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_f80h3")
 theme_override_font_sizes/font_size = 30
 text = "CREDITS
@@ -232,15 +232,15 @@ offset_top = -180.0
 offset_right = 367.0
 offset_bottom = -146.0
 grow_horizontal = 0
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 0.32549, 0.333333, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
 text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Background/SubViewportContainer/SubViewport/Camera3D")
 libraries = {
-"": SubResource("AnimationLibrary_g8lyt")
+&"": SubResource("AnimationLibrary_g8lyt")
 }
 autoplay = "main menu"
 

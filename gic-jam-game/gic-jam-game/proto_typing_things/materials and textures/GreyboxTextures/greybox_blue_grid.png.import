@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw0bffv107nie"
 path.s3tc="res://.godot/imported/greybox_blue_grid.png-babdc9645b9f365a8397e33397928887.s3tc.ctex"
+path.etc2="res://.godot/imported/greybox_blue_grid.png-babdc9645b9f365a8397e33397928887.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://proto_typing_things/materials and textures/GreyboxTextures/greybox_blue_grid.png"
-dest_files=["res://.godot/imported/greybox_blue_grid.png-babdc9645b9f365a8397e33397928887.s3tc.ctex"]
+dest_files=["res://.godot/imported/greybox_blue_grid.png-babdc9645b9f365a8397e33397928887.s3tc.ctex", "res://.godot/imported/greybox_blue_grid.png-babdc9645b9f365a8397e33397928887.etc2.ctex"]
 
 [params]
 

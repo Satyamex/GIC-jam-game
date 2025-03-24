@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdiis475flk15"
 path.s3tc="res://.godot/imported/Ground048_1K-PNG_AmbientOcclusion.png-6b0c4ee7fc5f41d36742966270df44cc.s3tc.ctex"
+path.etc2="res://.godot/imported/Ground048_1K-PNG_AmbientOcclusion.png-6b0c4ee7fc5f41d36742966270df44cc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://proto_typing_things/materials and textures/Ground048_1K-PNG/Ground048_1K-PNG_AmbientOcclusion.png"
-dest_files=["res://.godot/imported/Ground048_1K-PNG_AmbientOcclusion.png-6b0c4ee7fc5f41d36742966270df44cc.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ground048_1K-PNG_AmbientOcclusion.png-6b0c4ee7fc5f41d36742966270df44cc.s3tc.ctex", "res://.godot/imported/Ground048_1K-PNG_AmbientOcclusion.png-6b0c4ee7fc5f41d36742966270df44cc.etc2.ctex"]
 
 [params]
 

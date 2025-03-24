@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1h0m8i5n15re"
 path.s3tc="res://.godot/imported/granite_tile_diff_1k.jpg-1234b050ba81f5d5aed4f94539c766bd.s3tc.ctex"
+path.etc2="res://.godot/imported/granite_tile_diff_1k.jpg-1234b050ba81f5d5aed4f94539c766bd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://tile texture/granite_tile_diff_1k.jpg"
-dest_files=["res://.godot/imported/granite_tile_diff_1k.jpg-1234b050ba81f5d5aed4f94539c766bd.s3tc.ctex"]
+dest_files=["res://.godot/imported/granite_tile_diff_1k.jpg-1234b050ba81f5d5aed4f94539c766bd.s3tc.ctex", "res://.godot/imported/granite_tile_diff_1k.jpg-1234b050ba81f5d5aed4f94539c766bd.etc2.ctex"]
 
 [params]
 

@@ -1,0 +1,176 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1v8daufxvoog"]
+
+[ext_resource type="Script" uid="uid://dx3xr7wp50q2" path="res://levels/acene/modules/level_optimize.gd" id="1_1t7bf"]
+[ext_resource type="PackedScene" uid="uid://cs38vlq60xwv" path="res://levels/acene/main_loop_proto.tscn" id="1_swiao"]
+[ext_resource type="Material" uid="uid://d8v3yg8dker4" path="res://assests/floor_mat.tres" id="2_7jroa"]
+[ext_resource type="Material" uid="uid://8ertouwp47tw" path="res://assests/roof.tres" id="3_qbkn0"]
+[ext_resource type="Material" uid="uid://cpxr8oy0y4ghl" path="res://assests/wall_mat.tres" id="4_3yg1i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5uho"]
+albedo_color = Color(0.993041, 1, 0.671787, 1)
+metallic = 0.97
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.983019, 0.895213, 0, 1)
+emission_energy_multiplier = 2.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luqcs"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.80702, 0.87179, 0.997841, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4fp7x"]
+material = SubResource("StandardMaterial3D_luqcs")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.5
+radial_segments = 32
+
+[node name="level_module_start" type="Node3D"]
+script = ExtResource("1_1t7bf")
+
+[node name="room_structue" type="Node3D" parent="."]
+
+[node name="room" type="CSGCombiner3D" parent="room_structue"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="room_structue/room"]
+size = Vector3(70, 1, 70)
+material = ExtResource("2_7jroa")
+
+[node name="roof" type="CSGBox3D" parent="room_structue/room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137939, 5, 0.495148)
+size = Vector3(71.0034, 1, 130.99)
+material = ExtResource("3_qbkn0")
+
+[node name="boundary" type="CSGCombiner3D" parent="room_structue"]
+
+[node name="boundary 1" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 2.5, 0)
+size = Vector3(1, 5, 70)
+material = ExtResource("4_3yg1i")
+
+[node name="boundary 2" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 2.5, 0)
+size = Vector3(1, 5, 70)
+material = ExtResource("4_3yg1i")
+
+[node name="boundary 3" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -35.3113)
+size = Vector3(70, 5, 1)
+material = ExtResource("4_3yg1i")
+
+[node name="DOOR" type="CSGBox3D" parent="room_structue/boundary/boundary 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72105, 0.180603, -0.0367432)
+operation = 2
+size = Vector3(2.57449, 3.36121, 1.85)
+material = ExtResource("4_3yg1i")
+
+[node name="boundary 4" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179138, 2.5, 65.5089)
+size = Vector3(70.9594, 5, 1)
+
+[node name="DOOR" type="CSGBox3D" parent="room_structue/boundary/boundary 4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96066, -0.602051, -0.169342)
+operation = 2
+size = Vector3(2.37556, 3.796, 2.776)
+material = ExtResource("4_3yg1i")
+
+[node name="DIP" type="Node3D" parent="room_structue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -50)
+
+[node name="structure" type="CSGCombiner3D" parent="room_structue/DIP"]
+use_collision = true
+
+[node name="base" type="CSGBox3D" parent="room_structue/DIP/structure"]
+size = Vector3(70, 1, 30)
+material = ExtResource("2_7jroa")
+
+[node name="wall4" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.941974, 12.2725, -15.5363)
+size = Vector3(72.3541, 15, 1)
+material = ExtResource("4_3yg1i")
+
+[node name="wall2" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 10, 0)
+size = Vector3(1, 20, 30)
+material = ExtResource("4_3yg1i")
+
+[node name="wall3" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 10, 0)
+size = Vector3(1, 20, 30)
+material = ExtResource("4_3yg1i")
+
+[node name="wall" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.74176, 15.107)
+size = Vector3(70, 15.4835, 1.841)
+material = ExtResource("4_3yg1i")
+
+[node name="DIP2" type="Node3D" parent="room_structue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 50)
+
+[node name="structure" type="CSGCombiner3D" parent="room_structue/DIP2"]
+use_collision = true
+
+[node name="base" type="CSGBox3D" parent="room_structue/DIP2/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+size = Vector3(70, 1, 30)
+material = ExtResource("2_7jroa")
+
+[node name="wall2" type="CSGBox3D" parent="room_structue/DIP2/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 10, 0.511719)
+size = Vector3(1, 20, 31.0234)
+material = ExtResource("4_3yg1i")
+
+[node name="wall3" type="CSGBox3D" parent="room_structue/DIP2/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 10, 0.526611)
+size = Vector3(1, 20, 31.0532)
+material = ExtResource("4_3yg1i")
+
+[node name="wall" type="CSGBox3D" parent="room_structue/DIP2/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.74176, 15.107)
+size = Vector3(70, 15.4835, 1.841)
+material = ExtResource("4_3yg1i")
+
+[node name="lighting" type="Node3D" parent="."]
+
+[node name="lamp" type="Node3D" parent="lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99621, -51.6729)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="lighting/lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255592, 0.262451, -0.471191)
+cast_shadow = 0
+radius = 0.323117
+rings = 8
+material = SubResource("StandardMaterial3D_i5uho")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting/lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449431, 0.21227, -0.54884)
+light_color = Color(1, 1, 0.760784, 1)
+light_energy = 2.0
+omni_range = 114.774
+
+[node name="Tube light" type="Node3D" parent="lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56242, 4.46276, 24.9053)
+
+[node name="structure" type="MeshInstance3D" parent="lighting/Tube light"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_4fp7x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lighting/Tube light"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0527192, -2.30443e-09)
+light_color = Color(0.830974, 1, 0.998106, 1)
+light_energy = 4.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 1.707
+omni_range = 80.0
+
+[node name="difficulty manger" type="Node3D" parent="."]
+
+[node name="loop_manger" parent="difficulty manger" instance=ExtResource("1_swiao")]
+
+[node name="player_pos_check" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.875, -100)

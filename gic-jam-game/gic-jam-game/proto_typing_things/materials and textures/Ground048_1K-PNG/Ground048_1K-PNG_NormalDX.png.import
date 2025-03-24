@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://di88gjdsyq0ii"
 path.s3tc="res://.godot/imported/Ground048_1K-PNG_NormalDX.png-3ac36a4171882298cd30f661235c358b.s3tc.ctex"
+path.etc2="res://.godot/imported/Ground048_1K-PNG_NormalDX.png-3ac36a4171882298cd30f661235c358b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://proto_typing_things/materials and textures/Ground048_1K-PNG/Ground048_1K-PNG_NormalDX.png"
-dest_files=["res://.godot/imported/Ground048_1K-PNG_NormalDX.png-3ac36a4171882298cd30f661235c358b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ground048_1K-PNG_NormalDX.png-3ac36a4171882298cd30f661235c358b.s3tc.ctex", "res://.godot/imported/Ground048_1K-PNG_NormalDX.png-3ac36a4171882298cd30f661235c358b.etc2.ctex"]
 
 [params]
 

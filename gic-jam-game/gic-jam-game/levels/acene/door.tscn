@@ -3,17 +3,20 @@
 [ext_resource type="Script" uid="uid://dc8j8l304pn7d" path="res://levels/acene/door.gd" id="1_m3hdv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8nuap"]
-size = Vector3(3, 4, 1)
+size = Vector3(3, 4, 1.99002)
 
-[node name="door" type="Node3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64501, 0.276611)
-size = Vector3(3, 3, 0.446777)
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D"]
 script = ExtResource("1_m3hdv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17077, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17077, 1.82292)
 shape = SubResource("BoxShape3D_8nuap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52576, 0.276611)
+use_collision = true
+size = Vector3(3, 3, 0.446777)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="door_opened" from="." to="." method="_on_door_opened"]

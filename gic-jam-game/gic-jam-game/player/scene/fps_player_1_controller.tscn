@@ -388,6 +388,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651091, 0)
 
 [node name="Camera3D" type="Camera3D" parent="head/eye"]
 cull_mask = 524287
+far = 150.0
 
 [node name="UI" type="Node" parent="head/eye/Camera3D"]
 

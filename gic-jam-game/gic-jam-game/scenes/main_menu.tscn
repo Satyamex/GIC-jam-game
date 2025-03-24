@@ -1,0 +1,254 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsdf2fvkpsi3f"]
+
+[ext_resource type="FontFile" uid="uid://sho03uh7qbn0" path="res://font/Orbitron-Regular.ttf" id="1_f80h3"]
+[ext_resource type="PackedScene" uid="uid://d05idhyo00qp5" path="res://map(final).gltf" id="2_ta5p4"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="2_uuer6"]
+[ext_resource type="AudioStream" uid="uid://c5cvfihfhi6f5" path="res://music/main_theme.wav" id="4_wgvvw"]
+
+[sub_resource type="Animation" id="Animation_sqmn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(22.1782, 1.6033, -16.6444)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.34929, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dsjda"]
+resource_name = "main menu"
+length = 16.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6.75708, 8.03333, 10, 12.0333, 13.0667, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(22.1782, 1.6033, -16.6444), Vector3(22.178, 2.068, -15.409), Vector3(22.3313, 2.068, -14.9472), Vector3(22.123, 2.068, -12.8397), Vector3(24.5033, 2.068, -11.8453), Vector3(28.1116, 2.068, -9.70167), Vector3(31.7583, 2.068, -6.37019), Vector3(42.179, 2.068, -0.501668), Vector3(42.179, 2.068, -0.501669), Vector3(46.2891, 2.068, 2.37613), Vector3(46.3239, 2.068, -4.01093), Vector3(22.1782, 1.6033, -16.6444)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5, 13.8333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.34929, 0), Vector3(0, -2.96139, 0), Vector3(0, 3.10201, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8lyt"]
+_data = {
+"RESET": SubResource("Animation_sqmn0"),
+"main menu": SubResource("Animation_dsjda")
+}
+
+[node name="main_menu" type="CanvasLayer"]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Map" parent="Background" instance=ExtResource("2_ta5p4")]
+
+[node name="SpotLight3D" type="OmniLight3D" parent="Background/Map"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1502, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.978508, 0, 0.206207, 0, 1, 0, -0.206207, 0, -0.978508, 22.1782, 1.6033, -16.6444)
+fov = 80.0278
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_uuer6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 66
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 66
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 100
+text = "       INFIKNIGHT
+"
+
+[node name="SPACE" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 100
+
+[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.406717, 0.873887, 0.424736, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(0.879947, 0.962077, 3.08037e-06, 1)
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="SPACE2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 25
+
+[node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(1, 0.517647, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.910932, 0.844216, 3.85046e-07, 1)
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 60
+text = "QUIT
+"
+
+[node name="Credits" type="Button" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_hover_color = Color(0.502648, 0.839686, 0.911004, 1)
+theme_override_colors/font_pressed_color = Color(0.27451, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0.313726, 1, 1)
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 30
+text = "CREDITS
+"
+
+[node name="center continer" type="CenterContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.0
+offset_top = -196.0
+offset_right = 378.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/center continer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/center continer/PanelContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/center continer/PanelContainer/Panel"]
+layout_mode = 0
+offset_left = -383.0
+offset_top = -183.0
+offset_right = 372.0
+offset_bottom = 206.0
+color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[node name="Label" type="Label" parent="Control/center continer/PanelContainer/Panel"]
+layout_mode = 2
+offset_left = -382.0
+offset_top = -183.0
+offset_right = 394.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("1_f80h3")
+theme_override_font_sizes/font_size = 31
+text = "MADE BY:-
+Indie_Ayush
+Randint
+NEO
+DumbDev
+
+All the 3d models used are licanced CC0 or 
+allowed for public use. They own all the
+ rights to there respective assets."
+
+[node name="MarginContainer" type="Control" parent="Control/center continer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Exit creit menu" type="Button" parent="Control/center continer/PanelContainer/MarginContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 321.0
+offset_top = -180.0
+offset_right = 367.0
+offset_bottom = -146.0
+grow_horizontal = 0
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.32549, 0.333333, 1)
+text = "X"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Background/SubViewportContainer/SubViewport/Camera3D")
+libraries = {
+"": SubResource("AnimationLibrary_g8lyt")
+}
+autoplay = "main menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wgvvw")
+autoplay = true
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Play" to="Control" method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Credits" to="Control/center continer" method="show"]
+[connection signal="pressed" from="Control/center continer/PanelContainer/MarginContainer/Exit creit menu" to="Control/center continer" method="hide"]

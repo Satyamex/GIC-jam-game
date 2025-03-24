@@ -47,5 +47,6 @@ func _on_enemy_death():
 	total_enemy_left -= 1
 
 func  _process(delta):
-	door_instance.update_door_state(total_enemy_left)
+	#door_instance.update_door_state(total_enemy_left)
+	pass
  

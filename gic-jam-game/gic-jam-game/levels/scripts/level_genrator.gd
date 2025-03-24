@@ -3,7 +3,7 @@ extends Node3D
 var rng = RandomNumberGenerator.new()
 @export var _modules: Array[PackedScene] = []
 var offset = -131.042
-var amount = 10
+var amount = 1000
 
 
 func _ready():

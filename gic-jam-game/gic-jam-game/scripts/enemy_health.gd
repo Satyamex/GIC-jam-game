@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
-
 @export var health : float = 100
 
 func _damage(damge:float):
-	health = health - damge
+	health -= damge
 	if health <= 0:
-		queue_free()
+		get_parent().queue_free()
+
 func _physics_process(delta):
 	if !is_on_floor():
-		velocity.y -= 9.8 *delta
+		velocity.y -= 9.8 * delta
 	move_and_slide()

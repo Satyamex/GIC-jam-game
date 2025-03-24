@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd6m2jpmmmgxf"]
+[gd_scene load_steps=4 format=3 uid="uid://161pvqxi6kop"]
 
 [ext_resource type="PackedScene" uid="uid://bbw3c7k3bjwsm" path="res://assests/Gun_models/shotgun.glb" id="1_jlmkj"]
 [ext_resource type="FontFile" uid="uid://sho03uh7qbn0" path="res://font/Orbitron-Regular.ttf" id="2_ph2ub"]

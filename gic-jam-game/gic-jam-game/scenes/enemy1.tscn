@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqlns1qe033u2"]
+
+[ext_resource type="Script" path="res://scripts/enemy_health.gd" id="1_ymiw3"]
+[ext_resource type="PackedScene" uid="uid://fvyml0xp2t2s" path="res://assests/enemy/enemy_1BASE.tscn" id="2_rg7bi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swgt0"]
+height = 2.86325
+
+[node name="enemy1" type="Node3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_ymiw3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00258207, 1.02581, 0.0889927)
+shape = SubResource("CapsuleShape3D_swgt0")
+
+[node name="enemy1" parent="." instance=ExtResource("2_rg7bi")]

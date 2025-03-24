@@ -1,6 +1,6 @@
-[gd_scene load_steps=80 format=3 uid="uid://beo6o4abxannc"]
+[gd_scene load_steps=80 format=3 uid="uid://bodwmh0ukym74"]
 
-[ext_resource type="Script" uid="uid://ckqwq0yof3dcl" path="res://proto_typing_things/demo_scene/test-scene.gd" id="1_lwfuo"]
+[ext_resource type="Script" path="res://proto_typing_things/demo_scene/test-scene.gd" id="1_lwfuo"]
 [ext_resource type="Texture2D" uid="uid://b12m8t5aqws41" path="res://proto_typing_things/materials and textures/Sky boxes/free_-_skybox_basic_sky_0.jpg" id="2_isvas"]
 [ext_resource type="Material" uid="uid://b3q078b2j4dmq" path="res://proto_typing_things/materials and textures/red.tres" id="3_3bwqi"]
 [ext_resource type="Texture2D" uid="uid://dqgp27twvvjfw" path="res://proto_typing_things/materials and textures/Ground048_1K-PNG/Ground048_1K-PNG_Color.png" id="4_evdi7"]
@@ -29,7 +29,8 @@
 [ext_resource type="Material" uid="uid://ip4240m6psmu" path="res://proto_typing_things/materials and textures/coneblue.tres" id="27_nl6us"]
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="28_7gmax"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_bwkgb"]
-[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://assests/demo_enemy.tscn" id="30_cb55s"]
+[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://scenes/enemy1.tscn" id="30_cb55s"]
+[ext_resource type="PackedScene" uid="uid://duqrv7v37ik2g" path="res://scenes/ability_fullhealth.tscn" id="31_38hdn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]
 panorama = ExtResource("2_isvas")
@@ -306,9 +307,6 @@ top_radius = 0.7
 bottom_radius = 0.7
 height = 4.0
 radial_segments = 25
-
-[sub_resource type="Resource" id="Resource_rfua1"]
-metadata/__load_path__ = "res://scenes/ability(speed).tscn"
 
 [node name="prototyping level" type="Node3D"]
 script = ExtResource("1_lwfuo")
@@ -705,29 +703,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59209, -4.94785, -5.04697)
 [node name="CharacterBody3D" parent="player" instance=ExtResource("29_bwkgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63916, 6.11801, 0)
 
-[node name="demo enemy" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77132, 1.47194, 10.6171)
+[node name="enemy1" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.2888, 0.471936, 18.9445)
 
-[node name="demo enemy2" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0161, 1.47194, 12.1997)
+[node name="enemy2" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 12.0777, 0.471936, 25.6071)
 
-[node name="demo enemy3" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99622, 1.47194, 10.7185)
+[node name="enemy3" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 25.4056, 0.471937, 10.6789)
 
-[node name="demo enemy4" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1883, 1.47194, 16.3489)
+[node name="enemy4" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.4716, 0.471936, -8.68138)
 
-[node name="demo enemy5" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2398, 1.47194, 20.803)
+[node name="enemy5" parent="." instance=ExtResource("30_cb55s")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 23.2136, 0.471936, -2.28746)
 
-[node name="demo enemy6" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0488, 1.47194, 8.34353)
-
-[node name="demo enemy7" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83723, 1.47193, 17.5156)
-
-[node name="demo enemy8" parent="." instance=ExtResource("30_cb55s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0168, 1.47194, 19.2365)
-
-[node name="Ability(speed)" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73197, 0.471934, 12.1962)
+[node name="ability_fullhealth" parent="." instance=ExtResource("31_38hdn")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.5, 0.5, -0.707107, -0.5, 0.5, 0.707107, 17, 1.60151, -6.01754)

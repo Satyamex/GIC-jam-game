@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GIC jam game"
-run/main_scene="uid://c7xxnopoxjj01"
+run/main_scene="uid://bsdf2fvkpsi3f"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://game_icon.png"

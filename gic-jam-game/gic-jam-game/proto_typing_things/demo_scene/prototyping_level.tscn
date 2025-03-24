@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="27_gk051"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_b64sm"]
 [ext_resource type="Script" uid="uid://dvo53bip80eki" path="res://levels/scripts/prototyping_main_loop_manager.gd" id="30_qm6nu"]
-[ext_resource type="PackedScene" uid="uid://b44iefbdxi1re" path="res://levels/acene/lev_var_manager.tscn" id="31_1tmjk"]
+[ext_resource type="Script" uid="uid://cwb24yqhfylaj" path="res://levels/scripts/lev_var_manager.gd" id="31_qm6nu"]
 [ext_resource type="PackedScene" uid="uid://bggtkvxcr2wr" path="res://levels/acene/door_exit.tscn" id="32_qm6nu"]
 [ext_resource type="Material" uid="uid://c3fvba4yl0uwj" path="res://proto_typing_things/materials and textures/new_standard_material_3d.tres" id="34_v1pqr"]
 
@@ -707,7 +707,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63916, 6.11801, 0)
 [node name="loop_manger" type="Node3D" parent="."]
 script = ExtResource("30_qm6nu")
 
-[node name="level_var_manager" parent="loop_manger" instance=ExtResource("31_1tmjk")]
+[node name="level_var_manager" type="Node3D" parent="loop_manger"]
+script = ExtResource("31_qm6nu")
+no_of_enemy_type1 = 1
 
 [node name="enemy_t_1" type="Node3D" parent="loop_manger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78812, 0)

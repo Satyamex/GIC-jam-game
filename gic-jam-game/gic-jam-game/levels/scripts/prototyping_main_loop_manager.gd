@@ -11,7 +11,8 @@ var enemy_type_two: PackedScene = preload("res://proto_typing_things/demo_scene/
 
 var door = preload("res://levels/scripts/door_exit.gd")
 var door_instance
-
+var q =20
+var s = -20
 func _ready():
 	randomize()
 	door_instance = door.new()
@@ -22,8 +23,8 @@ func _ready():
 	# Spawn Type 1 Enemies
 	for i in range(_no_of_enimies_to_spawn_type_1):
 		var enemy = enemy_type_one.instantiate()
-		enemy.position.x = randf_range(-50, 50)
-		enemy.position.z = randf_range(-50, 50)
+		enemy.position.x = randf_range(s, q)
+		enemy.position.z = randf_range(s, q)
 		enemy_t_1.add_child(enemy)
 		if enemy.has_signal("death") and not enemy.death.is_connected(_on_enemy_death):
 			enemy.death.connect( _on_enemy_death)
@@ -32,8 +33,8 @@ func _ready():
 	if level_var_manager.enemy_type_2:
 		for i in range(_no_of_enimies_to_spawn_type_2):
 			var enemy = enemy_type_two.instantiate()
-			enemy.position.x = randf_range(-50, 50)
-			enemy.position.z = randf_range(-50, 50)
+			enemy.position.x = randf_range(s, q)
+			enemy.position.z = randf_range(s, q)
 			enemy_t_2.add_child(enemy)
 			if enemy.has_signal("death") and not enemy.death.is_connected(_on_enemy_death):
 				enemy.death.connect( _on_enemy_death)

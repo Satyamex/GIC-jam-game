@@ -52,10 +52,8 @@ func _physics_process(delta):
 	if can_shoot:
 		var target = enemy_raycast.get_collider()
 		if target == player and player.health > 0:
-			print("player is taking damage")
 			gunshot.play()
 			player.health -= damage
-			print("player health: ", player.health)
 			can_shoot = false  # RESET SHOOTING ABILITY AFTER A SHOT
 
 			# SHOW MUZZLE FLASH

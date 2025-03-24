@@ -45,6 +45,7 @@ size = Vector3(71.0034, 1, 130.99)
 material = ExtResource("3_kkvfx")
 
 [node name="boundary" type="CSGCombiner3D" parent="room_structue"]
+use_collision = true
 
 [node name="boundary 1" type="CSGBox3D" parent="room_structue/boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 2.5, 0)

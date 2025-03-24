@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3s1o7e0g2s07"]
+[gd_scene load_steps=11 format=3 uid="uid://c3s1o7e0g2s07"]
 
-[ext_resource type="Script" uid="uid://dx3xr7wp50q2" path="res://levels/acene/modules/level_optimize.gd" id="1_03ufy"]
+[ext_resource type="Script" path="res://levels/acene/modules/level_optimize.gd" id="1_03ufy"]
 [ext_resource type="PackedScene" uid="uid://cs38vlq60xwv" path="res://levels/acene/main_loop_proto.tscn" id="1_7lm02"]
 [ext_resource type="Material" uid="uid://d8v3yg8dker4" path="res://assests/floor_mat.tres" id="2_2a73k"]
 [ext_resource type="Material" uid="uid://8ertouwp47tw" path="res://assests/roof.tres" id="3_lviqm"]
 [ext_resource type="Material" uid="uid://cpxr8oy0y4ghl" path="res://assests/wall_mat.tres" id="4_20vtk"]
+[ext_resource type="Texture2D" uid="uid://dq2qed7of146u" path="res://textures/granite_tile_02_diff_1k.jpg" id="5_d4x8t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33q1t"]
+albedo_texture = ExtResource("5_d4x8t")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5uho"]
 albedo_color = Color(0.993041, 1, 0.671787, 1)
@@ -69,6 +73,7 @@ material = ExtResource("4_20vtk")
 
 [node name="boundary 4" type="CSGBox3D" parent="room_structue/boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179138, 2.5, 65.5089)
+material_override = SubResource("StandardMaterial3D_33q1t")
 size = Vector3(70.9594, 5, 1)
 
 [node name="DOOR" type="CSGBox3D" parent="room_structue/boundary/boundary 4"]

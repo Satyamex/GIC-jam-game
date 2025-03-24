@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fvyml0xp2t2s"]
 
 [ext_resource type="PackedScene" uid="uid://dxilq7aavkrrk" path="res://assests/enemy/enemy1.glb" id="1_ioxfj"]
-[ext_resource type="Script" uid="uid://h5bv4v2mslua" path="res://scripts/enemy_shoot.gd" id="2_57mgt"]
+[ext_resource type="Script" path="res://scripts/enemy_shoot.gd" id="2_57mgt"]
 [ext_resource type="AudioStream" uid="uid://bis15cvim06nu" path="res://music/gunshot_enemy.wav" id="3_yviwq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3i3o3"]

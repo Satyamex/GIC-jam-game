@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxwdsjev64y4i"]
 
-[ext_resource type="Script" uid="uid://basu0clscvnde" path="res://scripts/enemy_health.gd" id="1_ymiw3"]
+[ext_resource type="Script" path="res://scripts/enemy_health.gd" id="1_ymiw3"]
 [ext_resource type="PackedScene" uid="uid://fvyml0xp2t2s" path="res://assests/enemy/enemy_1BASE.tscn" id="2_rg7bi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swgt0"]

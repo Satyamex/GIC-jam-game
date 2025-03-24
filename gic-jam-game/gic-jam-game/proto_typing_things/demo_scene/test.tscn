@@ -29,7 +29,7 @@
 [ext_resource type="Material" uid="uid://ip4240m6psmu" path="res://proto_typing_things/materials and textures/coneblue.tres" id="27_nl6us"]
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="28_7gmax"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_bwkgb"]
-[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://scenes/enemy1.tscn" id="30_cb55s"]
+[ext_resource type="PackedScene" uid="uid://dqlns1qe033u2" path="res://assests/demo_enemy.tscn" id="30_cb55s"]
 [ext_resource type="PackedScene" uid="uid://duqrv7v37ik2g" path="res://scenes/ability_fullhealth.tscn" id="31_38hdn"]
 [ext_resource type="PackedScene" uid="uid://d201ese7icrb5" path="res://scenes/ability_speed.tscn" id="32_xpxvb"]
 
@@ -706,12 +706,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63916, 6.11801, 0)
 
 [node name="enemy1" parent="." instance=ExtResource("30_cb55s")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.2888, 0.471936, 18.9445)
+script = null
 
 [node name="enemy2" parent="." instance=ExtResource("30_cb55s")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 12.0777, 0.471936, 25.6071)
+script = null
 
 [node name="enemy3" parent="." instance=ExtResource("30_cb55s")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 25.4056, 0.471937, 10.6789)
+script = null
 
 [node name="ability_fullhealth" parent="." instance=ExtResource("31_38hdn")]
 transform = Transform3D(0.707107, 0.707106, 0, -0.5, 0.5, -0.707107, -0.5, 0.5, 0.707107, 17, 1.60151, -6.01754)

@@ -15,6 +15,7 @@ var can_play: bool
 # Flags to trigger sounds only once
 var crouchSoundPlayed: bool = false
 var slideSoundPlayed: bool = false
+var player_current_pos:float 
 
 # ==============================================================================
 #                          GLOBAL CONFIGURATION
@@ -181,6 +182,7 @@ func _process(delta):
 
 # --- _physics_process: Main Loop ---
 func _physics_process(delta):
+	player_current_pos = position.z
 	# Update POV to match camera's transform.
 	_interaction_manager()
 	
@@ -437,10 +439,12 @@ func _on_timer_timeout():
 func _interaction_manager():
 	if interaction_ray_cast.is_colliding():
 		var collider = interaction_ray_cast.get_collider()
-		if collider.is_in_group("doors"):
+		if collider and collider.is_in_group("doors"):
 			print(collider)
 			print("door")
 			# Update the label with the door's locked state.
 			interaction_test.text = "Door is " + collider._door_state
 			if Input.is_action_just_pressed("interaction"):
 				collider.open()
+	else:
+		interaction_test.text = ""

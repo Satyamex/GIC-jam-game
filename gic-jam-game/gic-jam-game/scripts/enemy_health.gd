@@ -3,10 +3,15 @@ extends CharacterBody3D
 @export var health: float = 100
 signal death
 
+var _has_died: bool = false  # Prevents multiple death emissions
+
 func _damage(damage: float):
+	if _has_died:
+		return
 	health -= damage
 	if health <= 0:
-		death.emit()
+		_has_died = true
+		emit_signal("death")
 		queue_free()
 
 func _physics_process(delta):

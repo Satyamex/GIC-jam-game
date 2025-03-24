@@ -1,17 +1,18 @@
 extends Area3D
 
 @export var player_health: float = randf_range(150, 220)
-@export var locked: bool = false
-var _door_state: String = "unlock"
+@export var locked: bool = true
+
+var _door_state: String = "true"
 @onready var s_open = $open
 @onready var s_close = $close
-
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	# Add this door to the "door" group so that it can be detected by the raycast.
-	add_to_group("door")
 	randomize()
+	# Debug: Ensure the AnimationPlayer is found.
+	if animation_player == null:
+		print("AnimationPlayer node not found. Check the node path!")
 
 func open():
 	if locked:
@@ -19,27 +20,21 @@ func open():
 		print("Door is locked")
 	else:
 		print("Door is unlocked, playing open animation")
-		_door_state = "locked"
-		animation_player.play("open")
+		print("opening_ejfjakj")
+		$AnimationPlayer.play("open")
 		_door_state = "open"
+		_door_state = "locked"
+		#locked = true
 
 func close():
-	if locked == false:
+	if not locked:
 		_door_state = "locked"
 		print("Closing door")
 		animation_player.play("close")
 
-func _on_body_entered(body):
-	print(body)
-	if body.is_in_group("player"):
-		body.health = player_health
-
-
-
-
-func _on_door_state_chander_body_entered(body):
-	print(body)
-	if body.is_in_group("player"):
-		close()
-		locked = true
-		_door_state = "locked"
+func _update_door_state(enemy_count: int) -> void:
+	if enemy_count <= 0 and locked:  # Only unlock once
+		locked = false
+		print("All enemies defeated. Door unlocked!")
+		print("locked =", locked)
+		open()

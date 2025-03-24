@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dux84rqob72a7"]
+[gd_scene load_steps=82 format=3 uid="uid://dux84rqob72a7"]
 
 [ext_resource type="PackedScene" uid="uid://belw3mvkg448y" path="res://proto_typing_things/demo_scene/tube_light.tscn" id="1_ji0hm"]
 [ext_resource type="Script" uid="uid://cl1qri032tcmv" path="res://levels/scripts/loop_reloder_and manager.gd" id="1_mkpf0"]
@@ -29,10 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://bqns0s086d6ov" path="res://proto_typing_things/demo_scene/lamp.tscn" id="27_gk051"]
 [ext_resource type="PackedScene" uid="uid://dg63mpibslque" path="res://levels/acene/door_entrance.tscn" id="29_3fwii"]
 [ext_resource type="PackedScene" uid="uid://8pv5dj2wmaf0" path="res://player/scene/fps_player_1_controller.tscn" id="29_b64sm"]
-[ext_resource type="PackedScene" uid="uid://d1s6i6owpuqb5" path="res://levels/acene/door.tscn" id="30_350v5"]
 [ext_resource type="Script" uid="uid://dvo53bip80eki" path="res://levels/scripts/prototyping_main_loop_manager.gd" id="30_qm6nu"]
 [ext_resource type="PackedScene" uid="uid://b44iefbdxi1re" path="res://levels/acene/lev_var_manager.tscn" id="31_1tmjk"]
-[ext_resource type="PackedScene" uid="uid://bxwdsjev64y4i" path="res://scenes/enemy1.tscn" id="33_1tmjk"]
+[ext_resource type="PackedScene" uid="uid://bggtkvxcr2wr" path="res://levels/acene/door_exit.tscn" id="32_qm6nu"]
 [ext_resource type="Material" uid="uid://c3fvba4yl0uwj" path="res://proto_typing_things/materials and textures/new_standard_material_3d.tres" id="34_v1pqr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nav0n"]
@@ -701,12 +700,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.884026, -0.786656, 9.83273
 [node name="lamp3" parent="arena/st_h/CSGCombiner3D" instance=ExtResource("27_gk051")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59209, -4.94785, -5.04697)
 
-[node name="door_entrance" parent="arena/st_h/CSGCombiner3D" instance=ExtResource("29_3fwii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.336, 0.471936, -34.2236)
-
-[node name="door_k" parent="arena/st_h/CSGCombiner3D/door_entrance/doorstructure" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09083, 1.5766, 0)
-
 [node name="player" type="Node3D" parent="."]
 
 [node name="CharacterBody3D" parent="player" instance=ExtResource("29_b64sm")]
@@ -723,14 +716,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78812, 0)
 [node name="enemy_t_2" type="Node3D" parent="loop_manger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58959, 0)
 
-[node name="door" parent="." instance=ExtResource("30_350v5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.83746, 0.471936, 6.62575)
+[node name="door_exit" parent="." instance=ExtResource("32_qm6nu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79554, 0.471936, 18.9458)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("33_1tmjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3358, 0.47482, 10.2477)
-
-[connection signal="door_opened" from="door" to="." method="_on_door_door_opened"]
-[connection signal="death" from="CharacterBody3D" to="player/CharacterBody3D" method="_on_character_body_3d_death"]
-[connection signal="death" from="CharacterBody3D" to="loop_manger" method="_on_character_body_3d_death"]
-
-[editable path="arena/st_h/CSGCombiner3D/door_entrance"]
+[node name="door_entrance" parent="." instance=ExtResource("29_3fwii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3511, 0.471936, 21.0085)

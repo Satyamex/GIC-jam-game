@@ -5,6 +5,7 @@ var rng = RandomNumberGenerator.new()
 var offset = -131.042
 var amount = 10
 
+
 func _ready():
 	rng.randomize()
 	for i in range(amount):

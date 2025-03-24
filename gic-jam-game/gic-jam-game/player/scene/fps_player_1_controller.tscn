@@ -569,7 +569,13 @@ cull_mask = 524288
 
 [node name="door_checker" type="Node3D" parent="head/eye"]
 
-[node name="interaction_ray_cast" type="RayCast3D" parent="head/eye/door_checker"]
+[node name="interaction_ray_cast" type="RayCast3D" parent="head/eye/door_checker" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
+target_position = Vector3(0, 0, -4)
+collide_with_areas = true
+script = ExtResource("9_14t8i")
+
+[node name="interaction_ray_cast2" type="RayCast3D" parent="head/eye/door_checker" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
 target_position = Vector3(0, 0, -4)
 collide_with_areas = true

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="GIC jam game"
-run/main_scene="uid://bodwmh0ukym74"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://dux84rqob72a7"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://game_icon.png"
 
 [input]
@@ -77,3 +77,4 @@ reload={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

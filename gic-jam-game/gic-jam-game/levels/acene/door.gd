@@ -1,17 +1,22 @@
-extends Node3D
-
+extends Area3D
 
 @export var difficulty = 1
 @export var locked: bool = true
+signal door_opened
+
 func _ready():
 	locked = true
 
 func open():
+	print("door_unlocked")
 	if !locked:
-		get_tree().reload_current_scene()
-	if locked:
-		print("door is locked")
-func  _update_door_state(enmy_count):
-	if enmy_count<=0:
+		print("Reloading Scene...")
+		emit_signal("door_opened")
+	else:
+		print("Door is locked")
+
+func _update_door_state(enemy_count):
+	if enemy_count <= 0 and locked:  # Ensure it only runs once
 		locked = false
-		print("working")
+		print("All enemies defeated. Unlocking door...")
+		open()

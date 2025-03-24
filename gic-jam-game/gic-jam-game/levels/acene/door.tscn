@@ -5,15 +5,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8nuap"]
 size = Vector3(3, 4, 1)
 
-[node name="door" type="Node3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64501, 0.276611)
-size = Vector3(3, 3, 0.446777)
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D"]
 script = ExtResource("1_m3hdv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17077, 0)
 shape = SubResource("BoxShape3D_8nuap")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52576, 0.276611)
+size = Vector3(3, 3, 0.446777)

@@ -2,11 +2,11 @@ extends Node3D
 
 @export var player_health:float
 @export var enemy_health:float = 50
-@export var  no_of_enemy_type1: int = 18
-@export var  no_of_enemy_type2: int = 10
+@export var  no_of_enemy_type1: int = 9
+@export var  no_of_enemy_type2: int = 0
 @export var _spike_spawn: bool = false
 @export var enemy_type_1:bool = true
-@export var enemy_type_2:bool = true
+@export var enemy_type_2:bool = false
 
 
 func _change_health(d_player_health:float , d_enemy_health:float):

@@ -443,7 +443,8 @@ func _interaction_manager():
 			interaction_test.text = "Door is " + collider._door_state
 			if Input.is_action_just_pressed("interaction"):
 				collider.open()
-		if collider is exit:
+		if collider is Exit:
+			var s = Exit
 			if collider.locked == false:
 				collider._exit()
 	else:

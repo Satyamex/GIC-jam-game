@@ -4,11 +4,9 @@ extends Area3D
 @export var locked: bool = false
 var _door_state: String = "unlocked"
 
-
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	# Add this door to the "door" group so that it can be detected by the raycast.
 	randomize()
 
 func open():
@@ -16,25 +14,17 @@ func open():
 		_door_state = "locked"
 		print("Door is locked")
 	else:
-		_door_state = "locked"
-		animation_player.play("open")
 		_door_state = "open"
-		locked= true
-		
+		print("Opening door")
+		animation_player.play("open")
+		locked = true
 
 func close():
-	if locked == false:
-		_door_state = "locked"
+	if locked:
+		_door_state = "closed"
 		print("Closing door")
 		animation_player.play("close")
-
-
-
-
-
+		locked = false
 
 func _on_door_state_chander_body_entered(body):
-	if body.is_in_group("player"):
-		close()
-		locked = true
-		_door_state = "locked"
+	pass

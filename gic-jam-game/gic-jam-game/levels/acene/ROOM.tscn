@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4cnmywngd7jt"]
+[gd_scene load_steps=23 format=3 uid="uid://b4cnmywngd7jt"]
 
 [ext_resource type="Script" uid="uid://blexpdws4in6r" path="res://levels/acene/room.gd" id="1_4dn3x"]
 [ext_resource type="Material" uid="uid://d8v3yg8dker4" path="res://assests/floor_mat.tres" id="1_wfxq2"]
 [ext_resource type="Material" uid="uid://8ertouwp47tw" path="res://assests/roof.tres" id="2_lihmd"]
 [ext_resource type="Material" uid="uid://cpxr8oy0y4ghl" path="res://assests/wall_mat.tres" id="3_4dn3x"]
-[ext_resource type="Script" uid="uid://25qfhoapmqt2" path="res://levels/scripts/door_exit.gd" id="5_bvx1w"]
-[ext_resource type="AudioStream" uid="uid://cukgti2hp7ow7" path="res://levels/acene/explosion-312361.mp3" id="6_me2ie"]
-[ext_resource type="PackedScene" uid="uid://c7s84wx0uts4c" path="res://levels/acene/blst_particles.tscn" id="7_o31df"]
-[ext_resource type="PackedScene" uid="uid://dg63mpibslque" path="res://levels/acene/door_entrance.tscn" id="8_me2ie"]
+[ext_resource type="Script" uid="uid://bnsyx74df147a" path="res://levels/scripts/door_entrance.gd" id="5_o31df"]
+[ext_resource type="PackedScene" uid="uid://duqrv7v37ik2g" path="res://scenes/ability_fullhealth.tscn" id="6_bvx1w"]
+[ext_resource type="AudioStream" uid="uid://iyd56o8q4lnp" path="res://assests/sfx/close.MP3" id="6_whvxg"]
+[ext_resource type="PackedScene" uid="uid://d201ese7icrb5" path="res://scenes/ability_speed.tscn" id="7_me2ie"]
+[ext_resource type="AudioStream" uid="uid://bwbe73d0ywjgk" path="res://assests/sfx/open.MP3" id="7_nrueg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wfxq2"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -44,24 +45,24 @@ data = PackedVector3Array(-1, 1.5, 0.1, 1, 1.5, 0.1, -1, -1.5, 0.1, 1, 1.5, 0.1,
 [sub_resource type="BoxShape3D" id="BoxShape3D_itjgt"]
 size = Vector3(2, 2.959, 0.231909)
 
-[sub_resource type="Animation" id="Animation_c0q1b"]
+[sub_resource type="Animation" id="Animation_x7rdx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("blst_particles:emitting")
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("blast\\:playing")
+tracks/1/path = NodePath("open:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -73,35 +74,87 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("doorstructure/door_k:visible")
+tracks/2/path = NodePath("close:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("close:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_whvxg")]
 }
 
-[sub_resource type="Animation" id="Animation_fpvs7"]
-resource_name = "blast"
+[sub_resource type="Animation" id="Animation_sfpvu"]
+resource_name = "close"
 length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("blst_particles:emitting")
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.466667, 1.46667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0.0333333, 0.7),
+"transitions": PackedFloat32Array(2.2974, 1.68179),
+"update": 0,
+"values": [Vector3(0, 1.87623, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("blast\\:playing")
+tracks/1/path = NodePath("close:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_whvxg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ajkos"]
+resource_name = "open"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1.68179, 2.2974),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.87623, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("open:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -110,32 +163,16 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("doorstructure/door_k:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.28),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbhdg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfpvu"]
 _data = {
-&"RESET": SubResource("Animation_c0q1b"),
-&"blast": SubResource("Animation_fpvs7")
+&"RESET": SubResource("Animation_x7rdx"),
+&"close": SubResource("Animation_sfpvu"),
+&"open": SubResource("Animation_ajkos")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_td0hx"]
-direction = Vector3(0, 0, -4)
-initial_velocity_min = 6.0
-initial_velocity_max = 9.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_td0hx"]
-size = Vector3(2, 3.08008, 3.32806)
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfpvu"]
+size = Vector3(2, 3, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfxq2"]
 albedo_color = Color(0.993041, 1, 0.671787, 1)
@@ -187,52 +224,6 @@ operation = 2
 size = Vector3(2.57449, 3.83275, 1.85)
 material = ExtResource("3_4dn3x")
 
-[node name="door_exit" type="Area3D" parent="boundary/boundary 3/DOOR" groups=["doors"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01437, 0)
-script = ExtResource("5_bvx1w")
-
-[node name="doorstructure" type="Node3D" parent="boundary/boundary 3/DOOR/door_exit"]
-transform = Transform3D(1.47527, 0, 0, 0, 1.33955, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="door_k" type="Node3D" parent="boundary/boundary 3/DOOR/door_exit/doorstructure"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09083, 1.5766, 0)
-
-[node name="door_1" type="MeshInstance3D" parent="boundary/boundary 3/DOOR/door_exit/doorstructure/door_k"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04118, -0.0612322, -0.00534797)
-mesh = SubResource("BoxMesh_x7rdx")
-skeleton = NodePath("../../../CollisionShape3D")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="boundary/boundary 3/DOOR/door_exit/doorstructure/door_k/door_1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="boundary/boundary 3/DOOR/door_exit/doorstructure/door_k/door_1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_sfpvu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="boundary/boundary 3/DOOR/door_exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496423, 1.51537, -0.00478032)
-shape = SubResource("BoxShape3D_itjgt")
-
-[node name="blast\\" type="AudioStreamPlayer3D" parent="boundary/boundary 3/DOOR/door_exit"]
-stream = ExtResource("6_me2ie")
-volume_db = 2.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="boundary/boundary 3/DOOR/door_exit"]
-libraries = {
-&"": SubResource("AnimationLibrary_qbhdg")
-}
-
-[node name="blst_particles" parent="boundary/boundary 3/DOOR/door_exit" instance=ExtResource("7_o31df")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-emitting = false
-one_shot = true
-speed_scale = 1.7
-process_material = SubResource("ParticleProcessMaterial_td0hx")
-
-[node name="opener" type="Area3D" parent="boundary/boundary 3/DOOR/door_exit"]
-
-[node name="ss" type="CollisionShape3D" parent="boundary/boundary 3/DOOR/door_exit/opener"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56631, 0.00869751)
-shape = SubResource("BoxShape3D_td0hx")
-
 [node name="boundary 4" type="CSGBox3D" parent="boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179138, 2.5, 65.5089)
 size = Vector3(70.9594, 5, 1)
@@ -243,8 +234,47 @@ operation = 2
 size = Vector3(2.37556, 3.796, 2.776)
 material = ExtResource("3_4dn3x")
 
-[node name="door_entrance" parent="boundary/boundary 4/DOOR" instance=ExtResource("8_me2ie")]
+[node name="door_entrance" type="Area3D" parent="boundary/boundary 4/DOOR" groups=["doors"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35896, 0)
+script = ExtResource("5_o31df")
+
+[node name="doorstructure" type="Node3D" parent="boundary/boundary 4/DOOR/door_entrance"]
+
+[node name="door_k" type="Node3D" parent="boundary/boundary 4/DOOR/door_entrance/doorstructure"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09083, 1.5766, 0)
+
+[node name="door_1" type="MeshInstance3D" parent="boundary/boundary 4/DOOR/door_entrance/doorstructure/door_k"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04118, -0.0612322, -0.00534797)
+mesh = SubResource("BoxMesh_x7rdx")
+skeleton = NodePath("../../../CollisionShape3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="boundary/boundary 4/DOOR/door_entrance/doorstructure/door_k/door_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="boundary/boundary 4/DOOR/door_entrance/doorstructure/door_k/door_1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sfpvu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="boundary/boundary 4/DOOR/door_entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496423, 1.51537, -0.00478032)
+shape = SubResource("BoxShape3D_itjgt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boundary/boundary 4/DOOR/door_entrance"]
+libraries = {
+&"": SubResource("AnimationLibrary_sfpvu")
+}
+
+[node name="open" type="AudioStreamPlayer3D" parent="boundary/boundary 4/DOOR/door_entrance"]
+stream = ExtResource("7_nrueg")
+volume_db = 2.0
+
+[node name="close" type="AudioStreamPlayer3D" parent="boundary/boundary 4/DOOR/door_entrance"]
+stream = ExtResource("6_whvxg")
+
+[node name="door_State_chander" type="Area3D" parent="boundary/boundary 4/DOOR/door_entrance"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="boundary/boundary 4/DOOR/door_entrance/door_State_chander"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77488, 0.857965)
+shape = SubResource("BoxShape3D_sfpvu")
 
 [node name="DIP" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -50)
@@ -337,10 +367,15 @@ light_energy = 2.0
 omni_range = 100.0
 omni_attenuation = 0.9
 
-[connection signal="body_entered" from="boundary/boundary 3/DOOR/door_exit" to="." method="_on_door_exit_body_entered"]
-[connection signal="body_entered" from="boundary/boundary 3/DOOR/door_exit" to="boundary/boundary 3/DOOR/door_exit" method="_on_body_entered"]
-[connection signal="body_exited" from="boundary/boundary 3/DOOR/door_exit" to="boundary/boundary 3/DOOR/door_exit" method="_on_body_exited"]
-[connection signal="animation_finished" from="boundary/boundary 3/DOOR/door_exit/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="boundary/boundary 3/DOOR/door_exit/AnimationPlayer" to="boundary/boundary 3/DOOR/door_exit" method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="boundary/boundary 3/DOOR/door_exit/opener" to="." method="_on_opener_body_entered"]
-[connection signal="body_entered" from="boundary/boundary 3/DOOR/door_exit/opener" to="boundary/boundary 3/DOOR/door_exit" method="_on_opener_body_entered"]
+[node name="ability_fullhealth" parent="." instance=ExtResource("6_bvx1w")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.5, 0.5, -0.707107, -0.5, 0.5, 0.707107, 0, 1.97859, 0)
+
+[node name="ability_fullhealth3" parent="." instance=ExtResource("6_bvx1w")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.5, 0.5, -0.707107, -0.5, 0.5, 0.707107, -11.054, 1.97859, 0)
+
+[node name="ability_fullhealth2" parent="." instance=ExtResource("7_me2ie")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.5, 0.5, -0.707107, -0.5, 0.5, 0.707107, 14.7338, 1.97859, 0)
+
+[connection signal="body_entered" from="boundary/boundary 4/DOOR/door_entrance" to="boundary/boundary 4/DOOR/door_entrance" method="_on_body_entered"]
+[connection signal="body_exited" from="boundary/boundary 4/DOOR/door_entrance" to="boundary/boundary 4/DOOR/door_entrance" method="_on_body_exited"]
+[connection signal="body_entered" from="boundary/boundary 4/DOOR/door_entrance/door_State_chander" to="boundary/boundary 4/DOOR/door_entrance" method="_on_door_state_chander_body_entered"]

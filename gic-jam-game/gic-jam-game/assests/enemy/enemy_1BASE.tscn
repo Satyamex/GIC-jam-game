@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://fvyml0xp2t2s"]
+[gd_scene load_steps=6 format=3 uid="uid://fvyml0xp2t2s"]
 
 [ext_resource type="PackedScene" uid="uid://dxilq7aavkrrk" path="res://assests/enemy/enemy1.glb" id="1_ioxfj"]
 [ext_resource type="Script" path="res://scripts/enemy_shoot.gd" id="2_57mgt"]
+[ext_resource type="AudioStream" uid="uid://bis15cvim06nu" path="res://music/gunshot_enemy.wav" id="3_yviwq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3i3o3"]
+emission_enabled = true
+emission = Color(1, 0.985, 0.1, 1)
+emission_energy_multiplier = 5.85
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pt6am"]
 
 [node name="enemy1" instance=ExtResource("1_ioxfj")]
 transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, 0, 0, 0)
@@ -83,3 +91,11 @@ transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="3"]
 transform = Transform3D(0.999999, -2.85877e-12, 1.54987e-20, 0, -1.59879e-06, -4.53647, 7.81597e-14, 36.576, -1.98295e-07, -0.00360923, 2.88566, -0.333177)
+
+[node name="muzzle_flash" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(0.1, 6.21725e-15, 2.11758e-22, 0, -4.37114e-09, 0.1, 6.21725e-15, -0.1, -4.37114e-09, 0.346108, 3.24, -1.477)
+material_override = SubResource("StandardMaterial3D_3i3o3")
+mesh = SubResource("CapsuleMesh_pt6am")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="5"]
+stream = ExtResource("3_yviwq")

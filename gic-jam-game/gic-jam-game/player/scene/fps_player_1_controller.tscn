@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=33 format=4 uid="uid://8pv5dj2wmaf0"]
 
 [ext_resource type="Script" path="res://player/script/player_controller.gd" id="1_iki0w"]
 [ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://fomvr4sxc04x" path="res://assests/sfx/jumpland44100.mp3" id="6_xntpc"]
 [ext_resource type="AudioStream" uid="uid://b4r7xkuogmbq8" path="res://assests/sfx/wood03.ogg" id="7_cwbnx"]
 [ext_resource type="AudioStream" uid="uid://w4o3rjftwhac" path="res://assests/sfx/0323(3).MP3" id="7_j61vv"]
+[ext_resource type="Texture2D" uid="uid://dfbc64mnu1v33" path="res://icons/heart-beats.png" id="7_kw6r5"]
 [ext_resource type="AudioStream" uid="uid://krv738agoj3d" path="res://assests/sfx/leaves01.ogg" id="7_o62yw"]
 [ext_resource type="AudioStream" uid="uid://cgioghrk06vpq" path="res://assests/sfx/wood02.ogg" id="8_kocn0"]
 [ext_resource type="Script" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
@@ -481,6 +482,35 @@ grow_vertical = 0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_3lgqy")
 expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -96.0
+offset_right = 53.0
+offset_bottom = -56.0
+grow_vertical = 0
+texture = ExtResource("7_kw6r5")
+expand_mode = 1
+
+[node name="health_label" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -95.0
+offset_right = 105.0
+offset_bottom = -56.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_yxifr")
+theme_override_font_sizes/font_size = 30
+text = "00"
 
 [node name="shothun" type="Node3D" parent="head/eye"]
 

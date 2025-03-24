@@ -80,6 +80,7 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var barrel_pos = $head/eye/SubViewportContainer/SubViewport/POV_2/fps_pov/shotgun/model_shotgun/RootNode/weapon_scifi_shotgun/barrelpos
 @onready var crosshair = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect
 @onready var bullet_icon = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect2
+@onready var health_label = %health_label
 
 @onready var ray_end_pos = $head/eye/shothun/ray_end_pos
 
@@ -89,7 +90,6 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 var PLAYER_SPEED: int = self.velocity.length()   # Current speed for debugging
 @onready var speed_label = %speed_label
 @onready var state = %state
-
 # ============================ SHOTGUN MANAGER ============================
 var spread: float = 7.0                        # Spread value for randomizing ray directions
 var damage: float = 30.0                         # Damage per pellet hit
@@ -185,7 +185,8 @@ func _physics_process(delta):
 	# Update debug speed.
 	PLAYER_SPEED = self.velocity.length()
 	speed_label.text = "SPEED: " + str(PLAYER_SPEED)
-	
+	# update health ui
+	health_label.text = str(health)
 	# ------ Gravity and Landing ------
 	if not is_on_floor():
 		velocity.y -= gravity * delta

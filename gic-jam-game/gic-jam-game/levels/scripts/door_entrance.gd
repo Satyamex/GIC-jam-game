@@ -16,10 +16,11 @@ func open():
 		_door_state = "locked"
 		print("Door is locked")
 	else:
-		print("Door is unlocked, playing open animation")
 		_door_state = "locked"
 		animation_player.play("open")
 		_door_state = "open"
+		locked= true
+		
 
 func close():
 	if locked == false:
@@ -27,16 +28,12 @@ func close():
 		print("Closing door")
 		animation_player.play("close")
 
-func _on_body_entered(body):
-	print(body)
-	if body.is_in_group("player"):
-		body.health = player_health
+
 
 
 
 
 func _on_door_state_chander_body_entered(body):
-	print(body)
 	if body.is_in_group("player"):
 		close()
 		locked = true

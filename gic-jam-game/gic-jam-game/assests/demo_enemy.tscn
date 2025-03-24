@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqlns1qe033u2"]
 
-[ext_resource type="Script" uid="uid://7ojin5sh6ihy" path="res://proto_typing_things/demo_scene/demo _enemy.gd" id="1_ymiw3"]
+[sub_resource type="Resource" id="Resource_cxxon"]
+metadata/__load_path__ = "res://proto_typing_things/demo_scene/demo _enemy.gd"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k43ux"]
 
@@ -12,7 +13,7 @@ roughness = 0.0
 material = SubResource("StandardMaterial3D_ymiw3")
 
 [node name="CharacterBody3D2" type="CharacterBody3D"]
-script = ExtResource("1_ymiw3")
+script = SubResource("Resource_cxxon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k43ux")

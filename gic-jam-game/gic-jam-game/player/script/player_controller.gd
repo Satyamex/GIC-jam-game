@@ -265,7 +265,7 @@ func _physics_process(delta):
 # --- _crouch: Manage Crouching ---
 func _crouch(delta):
 	# When crouch key is held or sliding is active:
-	if Input.is_action_pressed("crouch") or SLIDING:
+	if Input.is_action_pressed("crouch") or SLIDING and is_on_floor():
 		SPEED = crouch_walking_speed
 		CROUCHING = true
 		# Lower camera FOV slightly for crouching.
@@ -368,8 +368,7 @@ func _slide(delta):
 			SLIDING = false
 			# Reset flags and rotations.
 			slideSoundPlayed = false
-			camera.rotation.z = lerp(camera.rotation.z, 0.0, delta * lerp_speed)
-			pov_2.rotation.z = lerp(pov_2.rotation.z, 0.0, delta * lerp_speed)
+			camera.rotation.z = lerp(camera.rotation.z,-deg_to_rad((0.0)), delta * lerp_speed)
 			print("slide ended")
 			print(slide_dir)
 	else:
@@ -440,11 +439,12 @@ func _interaction_manager():
 	if interaction_ray_cast.is_colliding():
 		var collider = interaction_ray_cast.get_collider()
 		if collider and collider.is_in_group("doors"):
-			print(collider)
-			print("door")
 			# Update the label with the door's locked state.
 			interaction_test.text = "Door is " + collider._door_state
 			if Input.is_action_just_pressed("interaction"):
 				collider.open()
+		if collider is exit:
+			if collider.locked == false:
+				collider._exit()
 	else:
 		interaction_test.text = ""

@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=3 uid="uid://bodwmh0ukym74"]
 
-[ext_resource type="Script" path="res://proto_typing_things/demo_scene/test-scene.gd" id="1_lwfuo"]
+[ext_resource type="Script" uid="uid://ckqwq0yof3dcl" path="res://proto_typing_things/demo_scene/test-scene.gd" id="1_lwfuo"]
 [ext_resource type="Texture2D" uid="uid://b12m8t5aqws41" path="res://proto_typing_things/materials and textures/Sky boxes/free_-_skybox_basic_sky_0.jpg" id="2_isvas"]
 [ext_resource type="Material" uid="uid://b3q078b2j4dmq" path="res://proto_typing_things/materials and textures/red.tres" id="3_3bwqi"]
 [ext_resource type="Texture2D" uid="uid://dqgp27twvvjfw" path="res://proto_typing_things/materials and textures/Ground048_1K-PNG/Ground048_1K-PNG_Color.png" id="4_evdi7"]

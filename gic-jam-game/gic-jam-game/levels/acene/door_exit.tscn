@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bggtkvxcr2wr"]
+[gd_scene load_steps=13 format=3 uid="uid://bggtkvxcr2wr"]
 
 [ext_resource type="Script" uid="uid://25qfhoapmqt2" path="res://levels/scripts/door_exit.gd" id="1_td0hx"]
 [ext_resource type="AudioStream" uid="uid://cukgti2hp7ow7" path="res://levels/acene/explosion-312361.mp3" id="2_td0hx"]
@@ -19,22 +19,6 @@ data = PackedVector3Array(-1, 1.5, 0.1, 1, 1.5, 0.1, -1, -1.5, 0.1, 1, 1.5, 0.1,
 [sub_resource type="BoxShape3D" id="BoxShape3D_itjgt"]
 size = Vector3(2, 2.959, 0.231909)
 
-[sub_resource type="Animation" id="Animation_fpvs7"]
-resource_name = "blast"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("blst_particles:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.733333, 1.46667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
 [sub_resource type="Animation" id="Animation_c0q1b"]
 length = 0.001
 tracks/0/type = "value"
@@ -49,12 +33,84 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blast\\:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("doorstructure/door_k:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fpvs7"]
+resource_name = "blast"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blst_particles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.466667, 1.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blast\\:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("doorstructure/door_k:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbhdg"]
 _data = {
 &"RESET": SubResource("Animation_c0q1b"),
 &"blast": SubResource("Animation_fpvs7")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_td0hx"]
+direction = Vector3(0, 0, -4)
+initial_velocity_min = 6.0
+initial_velocity_max = 9.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_td0hx"]
+size = Vector3(2, 3.08008, 3.32806)
 
 [node name="door_exit" type="Area3D" groups=["doors"]]
 script = ExtResource("1_td0hx")
@@ -91,6 +147,16 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 emitting = false
 one_shot = true
+speed_scale = 1.7
+process_material = SubResource("ParticleProcessMaterial_td0hx")
+
+[node name="opener" type="Area3D" parent="."]
+
+[node name="ss" type="CollisionShape3D" parent="opener"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56631, 0.00869751)
+shape = SubResource("BoxShape3D_td0hx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="opener" to="." method="_on_opener_body_entered"]

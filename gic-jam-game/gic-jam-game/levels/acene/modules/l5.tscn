@@ -1,67 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1v8daufxvoog"]
+[gd_scene load_steps=4 format=3 uid="uid://d1v8daufxvoog"]
 
 [ext_resource type="Script" uid="uid://dx3xr7wp50q2" path="res://levels/acene/modules/level_optimize.gd" id="1_1t7bf"]
 [ext_resource type="PackedScene" uid="uid://cs38vlq60xwv" path="res://levels/acene/main_loop_proto.tscn" id="1_swiao"]
 [ext_resource type="PackedScene" uid="uid://b4cnmywngd7jt" path="res://levels/acene/ROOM.tscn" id="3_hxco8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5uho"]
-albedo_color = Color(0.993041, 1, 0.671787, 1)
-metallic = 0.97
-roughness = 0.0
-emission_enabled = true
-emission = Color(0.983019, 0.895213, 0, 1)
-emission_energy_multiplier = 2.52
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luqcs"]
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.80702, 0.87179, 0.997841, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4fp7x"]
-material = SubResource("StandardMaterial3D_luqcs")
-top_radius = 0.03
-bottom_radius = 0.03
-height = 0.5
-radial_segments = 32
-
 [node name="level_module_start" type="Node3D"]
 script = ExtResource("1_1t7bf")
-
-[node name="lighting" type="Node3D" parent="."]
-
-[node name="lamp" type="Node3D" parent="lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99621, -51.6729)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="lighting/lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255592, 0.262451, -0.471191)
-cast_shadow = 0
-radius = 0.323117
-rings = 8
-material = SubResource("StandardMaterial3D_i5uho")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="lighting/lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449431, 0.21227, -0.54884)
-light_color = Color(1, 1, 0.760784, 1)
-light_energy = 2.0
-omni_range = 114.774
-
-[node name="Tube light" type="Node3D" parent="lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56242, 4.46276, 24.9053)
-
-[node name="structure" type="MeshInstance3D" parent="lighting/Tube light"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("CylinderMesh_4fp7x")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="lighting/Tube light"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0527192, -2.30443e-09)
-light_color = Color(0.830974, 1, 0.998106, 1)
-light_energy = 4.0
-light_bake_mode = 1
-shadow_enabled = true
-shadow_normal_bias = 1.707
-omni_range = 80.0
 
 [node name="difficulty manger" type="Node3D" parent="."]
 

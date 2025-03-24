@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="GIC jam game"
-run/main_scene="res://proto_typing_things/demo_scene/test.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://c7xxnopoxjj01"
+run/enable_alt_space_menu=true
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://game_icon.png"
 
 [global_group]

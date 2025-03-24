@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://sho03uh7qbn0" path="res://font/Orbitron-Regular.ttf" id="1_f80h3"]
 [ext_resource type="PackedScene" uid="uid://d05idhyo00qp5" path="res://map(final).gltf" id="2_ta5p4"]
-[ext_resource type="Script" path="res://scripts/control.gd" id="2_uuer6"]
+[ext_resource type="Script" uid="uid://c2svoepag750p" path="res://scripts/control.gd" id="2_uuer6"]
 [ext_resource type="AudioStream" uid="uid://c5cvfihfhi6f5" path="res://music/main_theme.wav" id="4_wgvvw"]
 
 [sub_resource type="Animation" id="Animation_sqmn0"]
@@ -63,8 +63,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8lyt"]
 _data = {
-"RESET": SubResource("Animation_sqmn0"),
-"main menu": SubResource("Animation_dsjda")
+&"RESET": SubResource("Animation_sqmn0"),
+&"main menu": SubResource("Animation_dsjda")
 }
 
 [node name="main_menu" type="CanvasLayer"]

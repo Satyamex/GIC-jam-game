@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c3s1o7e0g2s07"]
 
-[ext_resource type="Script" path="res://levels/acene/modules/level_optimize.gd" id="1_03ufy"]
+[ext_resource type="Script" uid="uid://dx3xr7wp50q2" path="res://levels/acene/modules/level_optimize.gd" id="1_03ufy"]
 [ext_resource type="PackedScene" uid="uid://cs38vlq60xwv" path="res://levels/acene/main_loop_proto.tscn" id="1_7lm02"]
 [ext_resource type="Material" uid="uid://d8v3yg8dker4" path="res://assests/floor_mat.tres" id="2_2a73k"]
 [ext_resource type="Material" uid="uid://8ertouwp47tw" path="res://assests/roof.tres" id="3_lviqm"]

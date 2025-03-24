@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://8pv5dj2wmaf0"]
+[gd_scene load_steps=34 format=4 uid="uid://8pv5dj2wmaf0"]
 
 [ext_resource type="Script" uid="uid://dovewhoamjlpw" path="res://player/script/player_controller.gd" id="1_iki0w"]
 [ext_resource type="PackedScene" uid="uid://coee1r3olww4k" path="res://player/scene/pov_2.tscn" id="2_86052"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dfbc64mnu1v33" path="res://icons/heart-beats.png" id="7_kw6r5"]
 [ext_resource type="AudioStream" uid="uid://krv738agoj3d" path="res://assests/sfx/leaves01.ogg" id="7_o62yw"]
 [ext_resource type="AudioStream" uid="uid://cgioghrk06vpq" path="res://assests/sfx/wood02.ogg" id="8_kocn0"]
+[ext_resource type="Script" uid="uid://6mhelg7d2vaa" path="res://player/script/interaction_ray_cast.gd" id="9_14t8i"]
 [ext_resource type="Script" uid="uid://bnxa27rvsjx53" path="res://player/script/player_health_manager.gd" id="11_vw40g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iki0w"]
@@ -357,7 +358,7 @@ stream_0/stream = SubResource("AudioStreamOggVorbis_xntpc")
 stream_1/stream = ExtResource("7_cwbnx")
 stream_2/stream = ExtResource("8_kocn0")
 
-[node name="CharacterBody3D" type="CharacterBody3D" groups=["player", "player_S"]]
+[node name="CharacterBody3D2" type="CharacterBody3D" groups=["player", "player_S"]]
 script = ExtResource("1_iki0w")
 sensitivity = 0.1
 slide_timer_max = 1.2
@@ -514,12 +515,19 @@ theme_override_fonts/font = ExtResource("2_yxifr")
 theme_override_font_sizes/font_size = 30
 text = "00"
 
+[node name="interaction test" type="Label" parent="head/eye/Camera3D/UI/player_movement_Debugger"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 169.0
+offset_right = 206.0
+offset_bottom = 250.0
+text = "state"
+
 [node name="shothun" type="Node3D" parent="head/eye"]
 
 [node name="bullets_container" type="Node3D" parent="head/eye/shothun"]
 
 [node name="bullet" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
-enabled = false
 target_position = Vector3(0, 0, -70)
 
 [node name="bullet2" type="RayCast3D" parent="head/eye/shothun/bullets_container"]
@@ -546,6 +554,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="head/eye/SubViewportContainer"]
 unique_name_in_owner = true
@@ -557,6 +566,14 @@ render_target_update_mode = 4
 [node name="POV_2" parent="head/eye/SubViewportContainer/SubViewport" instance=ExtResource("2_86052")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651, 0)
 cull_mask = 524288
+
+[node name="door_checker" type="Node3D" parent="head/eye"]
+
+[node name="interaction_ray_cast" type="RayCast3D" parent="head/eye/door_checker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
+target_position = Vector3(0, 0, -4)
+collide_with_areas = true
+script = ExtResource("9_14t8i")
 
 [node name="obstacle_check" type="Node3D" parent="head"]
 

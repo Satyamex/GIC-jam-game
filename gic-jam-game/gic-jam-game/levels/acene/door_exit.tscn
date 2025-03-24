@@ -1,0 +1,193 @@
+[gd_scene load_steps=13 format=3 uid="uid://bggtkvxcr2wr"]
+
+[ext_resource type="Script" uid="uid://25qfhoapmqt2" path="res://levels/scripts/door_exit.gd" id="1_td0hx"]
+[ext_resource type="AudioStream" uid="uid://iyd56o8q4lnp" path="res://assests/sfx/close.MP3" id="2_fpvs7"]
+[ext_resource type="AudioStream" uid="uid://bwbe73d0ywjgk" path="res://assests/sfx/open.MP3" id="3_c0q1b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itjgt"]
+albedo_color = Color(0.356865, 0.406844, 0.769162, 1)
+emission_enabled = true
+emission = Color(0.595693, 0.380261, 0.600818, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7rdx"]
+material = SubResource("StandardMaterial3D_itjgt")
+size = Vector3(2, 3, 0.2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sfpvu"]
+data = PackedVector3Array(-1, 1.5, 0.1, 1, 1.5, 0.1, -1, -1.5, 0.1, 1, 1.5, 0.1, 1, -1.5, 0.1, -1, -1.5, 0.1, 1, 1.5, -0.1, -1, 1.5, -0.1, 1, -1.5, -0.1, -1, 1.5, -0.1, -1, -1.5, -0.1, 1, -1.5, -0.1, 1, 1.5, 0.1, 1, 1.5, -0.1, 1, -1.5, 0.1, 1, 1.5, -0.1, 1, -1.5, -0.1, 1, -1.5, 0.1, -1, 1.5, -0.1, -1, 1.5, 0.1, -1, -1.5, -0.1, -1, 1.5, 0.1, -1, -1.5, 0.1, -1, -1.5, -0.1, 1, 1.5, 0.1, -1, 1.5, 0.1, 1, 1.5, -0.1, -1, 1.5, 0.1, -1, 1.5, -0.1, 1, 1.5, -0.1, -1, -1.5, 0.1, 1, -1.5, 0.1, -1, -1.5, -0.1, 1, -1.5, 0.1, 1, -1.5, -0.1, -1, -1.5, -0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_itjgt"]
+size = Vector3(2, 2.959, 0.231909)
+
+[sub_resource type="Animation" id="Animation_x7rdx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("open:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("close:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_fpvs7")]
+}
+
+[sub_resource type="Animation" id="Animation_sfpvu"]
+resource_name = "close"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.7),
+"transitions": PackedFloat32Array(2.2974, 1.68179),
+"update": 0,
+"values": [Vector3(0, 1.87623, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("close:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_fpvs7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ajkos"]
+resource_name = "open"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorstructure/door_k:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1.68179, 2.2974),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.87623, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("open:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfpvu"]
+_data = {
+&"RESET": SubResource("Animation_x7rdx"),
+&"close": SubResource("Animation_sfpvu"),
+&"open": SubResource("Animation_ajkos")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfpvu"]
+size = Vector3(2, 3, 1)
+
+[node name="door_exit" type="Area3D" groups=["doors"]]
+script = ExtResource("1_td0hx")
+
+[node name="doorstructure" type="Node3D" parent="."]
+
+[node name="door_k" type="Node3D" parent="doorstructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09083, 1.5766, 0)
+
+[node name="door_1" type="MeshInstance3D" parent="doorstructure/door_k"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04118, -0.0612322, -0.00534797)
+mesh = SubResource("BoxMesh_x7rdx")
+skeleton = NodePath("../../../CollisionShape3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="doorstructure/door_k/door_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doorstructure/door_k/door_1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sfpvu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496423, 1.51537, -0.00478032)
+shape = SubResource("BoxShape3D_itjgt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sfpvu")
+}
+
+[node name="open" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_c0q1b")
+volume_db = 2.0
+
+[node name="close" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_fpvs7")
+
+[node name="door_State_chander" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_State_chander"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77488, 2.047)
+shape = SubResource("BoxShape3D_sfpvu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="door_State_chander" to="." method="_on_door_state_chander_body_entered"]

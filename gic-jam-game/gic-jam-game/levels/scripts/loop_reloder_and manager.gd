@@ -4,11 +4,6 @@ var reload_scene : bool = false
 
 
 
-
-
-
-
-
 func  _process(delta):
 	if reload_scene == true:
 		get_tree().call_deferred("reload_current_scene")

@@ -81,6 +81,8 @@ const head_bobing_crouching_intensity: float = 0.1   # Bobbing intensity (crouch
 @onready var crosshair = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect
 @onready var bullet_icon = $head/eye/Camera3D/UI/player_movement_Debugger/TextureRect2
 @onready var health_label = %health_label
+@onready var interaction_ray_cast = $head/eye/door_checker/interaction_ray_cast
+@onready var interaction_test = $"head/eye/Camera3D/UI/player_movement_Debugger/interaction test"
 
 @onready var ray_end_pos = $head/eye/shothun/ray_end_pos
 
@@ -180,7 +182,7 @@ func _process(delta):
 # --- _physics_process: Main Loop ---
 func _physics_process(delta):
 	# Update POV to match camera's transform.
-
+	_interaction_manager()
 	
 	# Update debug speed.
 	PLAYER_SPEED = self.velocity.length()
@@ -428,3 +430,17 @@ func start_reload():
 # makes shooting avalible again after timer runs out
 func _on_timer_timeout():
 	can_shoot = true
+
+
+
+#=======INTRACTION MANAGER
+func _interaction_manager():
+	if interaction_ray_cast.is_colliding():
+		var collider = interaction_ray_cast.get_collider()
+		if collider.is_in_group("doors"):
+			print(collider)
+			print("door")
+			# Update the label with the door's locked state.
+			interaction_test.text = "Door is " + collider._door_state
+			if Input.is_action_just_pressed("interaction"):
+				collider.open()

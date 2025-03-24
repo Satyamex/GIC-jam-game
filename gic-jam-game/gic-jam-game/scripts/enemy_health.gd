@@ -1,13 +1,15 @@
 extends CharacterBody3D
 
-@export var health : float = 100
+@export var health: float = 100
+signal death
 
-func _damage(damge:float):
-	health -= damge
+func _damage(damage: float):
+	health -= damage
 	if health <= 0:
+		death.emit()
 		queue_free()
 
 func _physics_process(delta):
-	if !is_on_floor():
+	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 	move_and_slide()

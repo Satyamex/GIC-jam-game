@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://k4iyijn8fx2p"]
+
+[node name="level_module_start" type="Node3D"]
+
+[node name="room_structue" type="Node3D" parent="."]
+
+[node name="room" type="CSGCombiner3D" parent="room_structue"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="room_structue/room"]
+size = Vector3(70, 1, 70)
+
+[node name="roof" type="CSGBox3D" parent="room_structue/room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -15)
+visible = false
+size = Vector3(70, 1, 100)
+
+[node name="roof2" type="CSGBox3D" parent="room_structue/room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -15)
+visible = false
+size = Vector3(70, 1, 100)
+
+[node name="boundary" type="CSGCombiner3D" parent="room_structue"]
+
+[node name="boundary 1" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 2.5, 0)
+size = Vector3(1, 5, 70)
+
+[node name="boundary 2" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 2.5, 0)
+size = Vector3(1, 5, 70)
+
+[node name="boundary 3" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -35.3113)
+size = Vector3(70, 5, 1)
+
+[node name="DOOR" type="CSGBox3D" parent="room_structue/boundary/boundary 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66052, 0, -0.0367432)
+operation = 2
+size = Vector3(3.85571, 5, 1.84985)
+
+[node name="boundary 4" type="CSGBox3D" parent="room_structue/boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 35)
+size = Vector3(70, 5, 1)
+
+[node name="DIP" type="Node3D" parent="room_structue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -50)
+
+[node name="structure" type="CSGCombiner3D" parent="room_structue/DIP"]
+use_collision = true
+
+[node name="base" type="CSGBox3D" parent="room_structue/DIP/structure"]
+size = Vector3(70, 1, 30)
+
+[node name="wall2" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 10, 0)
+size = Vector3(1, 20, 30)
+
+[node name="wall3" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 10, 0)
+size = Vector3(1, 20, 30)
+
+[node name="wall" type="CSGBox3D" parent="room_structue/DIP/structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.74176, 15.107)
+size = Vector3(70, 15.4835, 1.841)
+
+[node name="lighting" type="Node3D" parent="."]

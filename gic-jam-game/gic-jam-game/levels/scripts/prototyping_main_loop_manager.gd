@@ -44,8 +44,7 @@ func _ready():
 	# Count total enemies from the containers
 	total_enemy_left = enemy_t_1.get_child_count() + enemy_t_2.get_child_count()
 	print("Total enemies:", total_enemy_left)
-	if door_instance.has_signal("door_opened") and not door_instance.door_opened.is_connected(_door_is_opened):
-		door_instance.door_opened.connect(_door_is_opened)
+
 
 func _process(delta):
 	door_instance._update_door_state(total_enemy_left)
@@ -57,7 +56,5 @@ func _on_enemy_death():
 	else:
 		print("Warning: total_enemy_left is already 0")
 
-func _door_is_opened():
-	emit_signal("reload_loop")
-	print("working")
+
 	

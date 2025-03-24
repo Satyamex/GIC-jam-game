@@ -717,5 +717,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58959, 0)
 
 [node name="door" parent="." instance=ExtResource("30_350v5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.83746, 0.471936, 6.62575)
+difficulty = null
+locked = null
 
 [connection signal="door_opened" from="door" to="." method="_on_door_door_opened"]

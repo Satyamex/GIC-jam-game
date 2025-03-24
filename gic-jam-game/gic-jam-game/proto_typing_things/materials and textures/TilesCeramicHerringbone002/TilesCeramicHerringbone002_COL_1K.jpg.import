@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjrtvnmpjf64h"
 path.s3tc="res://.godot/imported/TilesCeramicHerringbone002_COL_1K.jpg-5241b5a6e21f22bcb6823b16ed888615.s3tc.ctex"
+path.etc2="res://.godot/imported/TilesCeramicHerringbone002_COL_1K.jpg-5241b5a6e21f22bcb6823b16ed888615.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://proto_typing_things/materials and textures/TilesCeramicHerringbone002/TilesCeramicHerringbone002_COL_1K.jpg"
-dest_files=["res://.godot/imported/TilesCeramicHerringbone002_COL_1K.jpg-5241b5a6e21f22bcb6823b16ed888615.s3tc.ctex"]
+dest_files=["res://.godot/imported/TilesCeramicHerringbone002_COL_1K.jpg-5241b5a6e21f22bcb6823b16ed888615.s3tc.ctex", "res://.godot/imported/TilesCeramicHerringbone002_COL_1K.jpg-5241b5a6e21f22bcb6823b16ed888615.etc2.ctex"]
 
 [params]
 

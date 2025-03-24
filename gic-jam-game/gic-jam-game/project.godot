@@ -15,6 +15,10 @@ run/main_scene="uid://dux84rqob72a7"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://game_icon.png"
 
+[global_group]
+
+player_S=""
+
 [input]
 
 forward={

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b12m8t5aqws41"
 path.s3tc="res://.godot/imported/free_-_skybox_basic_sky_0.jpg-98320fac5adda5042b5510d9426ff433.s3tc.ctex"
+path.etc2="res://.godot/imported/free_-_skybox_basic_sky_0.jpg-98320fac5adda5042b5510d9426ff433.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://proto_typing_things/materials and textures/Sky boxes/free_-_skybox_basic_sky_0.jpg"
-dest_files=["res://.godot/imported/free_-_skybox_basic_sky_0.jpg-98320fac5adda5042b5510d9426ff433.s3tc.ctex"]
+dest_files=["res://.godot/imported/free_-_skybox_basic_sky_0.jpg-98320fac5adda5042b5510d9426ff433.s3tc.ctex", "res://.godot/imported/free_-_skybox_basic_sky_0.jpg-98320fac5adda5042b5510d9426ff433.etc2.ctex"]
 
 [params]
 

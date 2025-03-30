@@ -15,7 +15,7 @@ script = ExtResource("1_ih20n")
 no_of_enemy_type1 = 12
 
 [node name="player_pos_check" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.875, -100)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.875, -70.263)
 
 [node name="room_structue" parent="." instance=ExtResource("3_mjddd")]
 

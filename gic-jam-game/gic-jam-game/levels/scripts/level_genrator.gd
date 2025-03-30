@@ -3,8 +3,9 @@ extends Node3D
 var rng = RandomNumberGenerator.new()
 @export var _modules: Array[PackedScene] = []
 var offset = -131.042
-var amount = 1000
-
+var amount = 10
+@onready var timer = $Timer
+var g = true
 
 func _ready():
 	rng.randomize()
@@ -17,3 +18,4 @@ func _loop_levels(index: int) -> void:
 	loop_instance.position.z = index * offset
 	loop_instance.position.y = -15 * index  # Each subsequent room is lowered by 15 relative to the previous one
 	add_child(loop_instance)
+	

@@ -14,4 +14,9 @@ script = ExtResource("1_1j3ge")
 _modules = Array[PackedScene]([ExtResource("2_wdtqc"), ExtResource("3_c1j37"), ExtResource("4_mcrjk"), ExtResource("5_lfmhf"), ExtResource("6_85sl4"), ExtResource("2_wabku")])
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("7_wabku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29451, 4.80489, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29451, 2.80615, 50.637)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
